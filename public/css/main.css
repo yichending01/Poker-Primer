@@ -110,7 +110,7 @@ main {
   font-size: 4rem;
   /* background-image: url("../assets/landing-img.webp");
   background-size: cover; */
-  background-color: rgb(41, 41, 41);
+  background-color: red;
   height: 60%;
   width: 100%;
 }
