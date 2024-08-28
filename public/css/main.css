@@ -1,0 +1,188 @@
+:root {
+  --card-red-color: rgb(231, 4, 4);
+  --main-blue-color: #3885ed;
+  --main-green-color: #358757;
+  --main-yellow-color: #eaac26;
+  --main-red-color: #d72b2b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.main-nav {
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+
+main {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.btn {
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    font: inherit;
+    border: 1px solid var(--main-red-color);
+    color: white;
+    background-color: var(--main-red-color);
+    border-radius: 3px;
+    cursor: pointer;
+}
+  
+.btn:hover,
+.btn:active {
+  background-color: white;
+  color: var(--main-red-color);
+}
+
+
+.main-nav__item-container {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+
+.main-nav__items {
+  margin: 0 15%;
+  padding: 1.1rem; 
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav__item a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.main-nav__item button {
+  font-size: 1.3rem;
+}
+
+
+.main-nav__logo a {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: white;
+  display: block;
+}
+
+.main-nav__logo a::first-letter {
+  color: var(--main-red-color);
+}
+
+
+.landing {
+  margin: 0;
+  padding: 0;
+  height: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-weight: 900;
+  font-size: 4rem;
+  /* background-image: url("../assets/landing-img.webp");
+  background-size: cover; */
+  background-color: rgb(41, 41, 41);
+  height: 60%;
+  width: 100%;
+}
+
+#poker {
+  color: var(--main-red-color);
+}
+
+
+#primer {
+  color: white;
+}
+
+
+.drills {
+  margin: 5rem 15%;
+}
+
+#drills-title {
+  font-size: 1.8rem;
+}
+
+
+#tools-title {
+  font-size: 1.8rem;
+}
+
+
+.drills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  height: 100%;
+}
+
+
+.drill-item {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  border-color: black;
+  border-style: solid;
+  border-width: 3px;
+  cursor: pointer;
+}
+
+.drill-item img {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+
+.drill-item:hover img {
+  transform: scale(1.1);
+}
+
+
+.tools {
+  margin: 5rem 15%;
+}
+
+
+.user-message--error {
+  margin: auto;
+  border: 2px solid var(--main-red-color);
+  border-radius: 3px;
+  background: rgb(246, 193, 193);
+  width: 90%;
+  text-align: center;
+}

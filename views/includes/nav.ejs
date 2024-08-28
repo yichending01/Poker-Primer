@@ -1,0 +1,19 @@
+<nav class="main-nav">
+    <ul class="main-nav__items">
+        <div class="main-nav__logo-container">        
+            <li class="main-nav__logo"><a href="/" id="logo">PP</a></li>
+        </div>
+        <div class="main-nav__item-container">
+            <% if (isLoggedIn) { %>
+                <li class="main-nav__item"><a href="/dashboard">Dashboard</a></li>
+                <li class="main-nav__item"><form action="/logout" method="post">
+                    <button type="submit" class="btn">Logout</button>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                </form></li>
+            <% } else { %>
+                <li class="main-nav__item"><a href="/signup">Sign Up</a></li>
+                <li class="main-nav__item"><a href="/login" class="btn">Login</a></li>
+            <% } %>
+        </div>
+    </ul>
+</nav>

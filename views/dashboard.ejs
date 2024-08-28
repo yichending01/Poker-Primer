@@ -1,0 +1,17 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/dashboard.css">
+<%- include('includes/nav.ejs') %>
+    </head>
+
+<body>
+    <h1>Dashboard</h1>
+    <h2 id="username"><%= user.email %></h2>
+    <section class="high-scores-container">
+            <h2 class="drill-name">Showdown</h2>
+        <div class="high-score-container" id="showdown-container">
+            <p class="game-mode blitz">Blitz:</p> <p class="game-mode-score"><%= user.blitzHighScore %></p>
+            <p class="game-mode survival">Survival:</p> <p class="game-mode-score"><%= user.survivalHighScore %></p>
+            <p class="game-mode twenty-hands">20-Hands:</p> <p class="game-mode-score"><%= user.twentyHandsHighScore %></p>
+        </div>
+    </section>
+</body>

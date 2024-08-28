@@ -1,0 +1,292 @@
+:root {
+    --card-red-color: rgb(231, 4, 4);
+    --main-blue-color: #3885ed;
+    --main-green-color: #358757;
+    --main-yellow-color: #eaac26;
+    --main-red-color: #d72b2b;
+    --off-green-color: #26633f;
+}
+
+html {
+    user-select: none;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: rgb(45, 45, 45);
+    /* overflow: hidden; */
+}
+
+#game-mode-top-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    margin: 0 15%;
+}
+
+#game-mode-back {
+    font-size: 1.5rem;
+    justify-self: start;
+    height: 2.5rem;
+}
+
+.game-title {
+    color: var(--main-green-color);
+    padding: 0;
+    margin: 0;
+    font-size: 3rem;
+}
+
+#choose-text {
+    margin: 1.5rem 0 3rem 0;
+    color: white;
+    font-size: 3.5rem;
+}
+
+
+#game-modes {
+    margin: 0;
+    text-align: center;
+}
+
+.game-mode-grid {
+    margin: 0 40%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+}
+
+.game-mode-item {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    cursor: pointer;
+}
+
+
+.game-mode-item img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+  
+  
+.game-mode-item:hover img {
+transform: scale(1.1);
+}
+
+
+#start-screen {
+    padding: 0 15%;
+    color: white;
+    height: 100%;
+}
+
+#start-screen-body {
+    text-align: center;
+}
+
+
+#start-screen-top-bar {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1.5rem 1rem;
+}
+
+
+#start-screen-back {
+    font-size: 1.5rem;
+}
+
+
+#game-01-start {
+    font-size: 3rem;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}
+
+#game-mode-name {
+    font-style: italic;
+    font-size: 4rem;
+    margin: 4rem 0 2rem 0;
+}
+
+#game-mode-description {
+    font-size: 2rem;
+}
+
+
+#game-area {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    background-color: var(--off-green-color);
+}
+
+
+.game-area-top-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#exit {
+    font-size: 1.5rem;
+    justify-self: start;
+    padding: 0.5rem 1rem;
+}
+
+#score {
+    grid-column: 2;
+    font-size: 2rem;
+}
+
+#timer {
+    font-size: 2rem;
+    grid-column: 3;
+    justify-self: end;
+    border-color: var(--main-yellow-color);
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    padding: 0.5rem 0.5rem;
+}
+
+
+#game-area h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+}
+
+#game-area h3 {
+    font-size: 2rem;
+    margin: 0;
+    padding-bottom: 1rem;
+}
+
+.board-wrapper {
+    margin: 0;
+}
+
+#board-cards {
+    position: center;
+}
+
+#board-cards img {
+    height: 20vh;
+    margin: 4px;
+}
+
+.player-cards-wrapper {
+    display: grid;
+    grid-template-columns: 4fr 1fr 4fr;
+    margin: 2rem 15% 2rem 15%;
+    align-items: center;
+}
+
+.player-cards {
+    display: grid;
+    margin: 0 1rem;
+}
+
+#player-1-container {
+    justify-self: end;
+}
+
+#player-2-container {
+    justify-self: start;
+}
+
+#tie {
+    font-size: 2rem;
+    height: 3rem;
+    width: 5rem;
+    align-self: center;
+    justify-self: center;
+    border-radius: 5px;
+}
+
+#player-1-cards, #player-2-cards {
+    cursor: pointer;
+}
+
+#player-1-cards:hover, #player-2-cards:hover {
+    transform: scale(1.1);
+}
+
+#player-1-cards img {
+    height: 20vh;
+    margin: 4px;
+}
+
+#player-2-cards img {
+    height: 20vh;
+    margin: 4px;
+}
+
+.result-wrapper {
+    text-align: center;
+}
+
+#result {
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+#next {
+    font-size: 2rem;
+    width: 10rem;
+}
+
+
+#game-over-screen {
+    text-align: center;
+    color: white;
+    height: 100%;
+}
+
+#game-over-screen h1 {
+    font-size: 5rem;
+}
+
+#game-over-screen h2 {
+    font-size: 3rem;
+}
+
+#final-score, #high-score {
+    font-size: 2rem;
+}
+
+.game-over-btns {
+    text-align: center;
+}
+
+#play-again, #game-over-back {
+    display: inline-block;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+#high-score-message {
+    font-size: 2rem;
+    color: var(--main-red-color);
+}

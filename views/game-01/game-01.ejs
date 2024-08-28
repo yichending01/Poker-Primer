@@ -1,0 +1,89 @@
+<%- include('../includes/head.ejs') %>
+        <link rel="stylesheet" href="/css/game-01.css">
+        <script src="/js/pokerutils.js"></script>
+        <script src="/js/game-01.js"></script>
+        <%- include('../includes/nav.ejs') %>
+
+    </head>
+
+    <body>
+
+        <div id="game-modes">
+            <div id="game-mode-top-bar">
+                <button id="game-mode-back" class="btn">Back</button>
+                <h1 class="game-title">SHOWDOWN</h1>
+            </div>
+            <h1 id="choose-text">Choose a Game Mode</h1>
+            <div class="game-mode-grid">
+                <div id="blitz" class="game-mode-item">
+                    <img src="assets/badges/blitz.png">
+                </div>
+                <div id="survival" class="game-mode-item">
+                    <img src="assets/badges/survival.png">
+                </div>
+                <div id="20-hands" class="game-mode-item">
+                    <img src="assets/badges/twenty-hands.png">
+                </div>
+                <div id="zen" class="game-mode-item">
+                    <img src="assets/badges/zen.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="start-screen" style="display: none;">
+            <div id="start-screen-top-bar">
+                <button id="start-screen-back" class="btn">Back</button>
+            </div>
+            <div id="start-screen-body">
+                <h1 id="game-mode-name"></h1>
+                <p id="game-mode-description"></p>
+                <button id="game-01-start" class="btn">START</button>
+            </div>
+        </div>
+
+        <div id="game-area" style="display: none;">
+            <div class="game-area-top-bar">
+                <button id="exit" class="btn">Exit</button>
+                <p id="score"></p>
+                <div id="timer" style="display: none;"></div>
+            </div>
+            <div class="board-wrapper">
+                <h2>BOARD</h2>
+                <div id="board-cards"></div>
+            </div>
+            <div class="player-cards-wrapper">
+                
+                <div class="player-cards" id="player-1-container">
+                    <h3>PLAYER 1</h3>
+                    <div id="player-1-cards"></div>
+                </div>
+
+                <button id="tie" class="btn">TIE</button>
+
+                <div class="player-cards" id="player-2-container">
+                    <h3>PLAYER 2</h3>
+                    <div id="player-2-cards"></div>
+                </div>
+            </div>
+            <div class="result-wrapper">
+                <p id="result"></p>
+                <button id="next" style="display: none;" class="btn">NEXT</button>
+            </div>
+        </div>
+
+        <div id="game-over-screen" style="display: none;">
+            <h1>Game Over</h1>
+            <p id="high-score-message" style="display: none;">New High Score!</p>
+            <h2>Score</h2>
+            <p id="final-score"></p>
+            <h2>High Score</h2>
+            <p id="high-score"></p>
+            <div class="game-over-btns">
+                <button id="play-again" class="btn">Play Again</button>
+                <br>
+                <button id="game-over-back" class="btn">Back</button>
+            </div>
+        </div>
+    </body>
+
+</html>

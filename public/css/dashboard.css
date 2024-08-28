@@ -1,0 +1,68 @@
+:root {
+    --card-red-color: rgb(231, 4, 4);
+    --main-blue-color: #3885ed;
+    --main-green-color: #358757;
+    --main-yellow-color: #eaac26;
+    --main-red-color: #d72b2b;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    text-align: center;
+    background-color: var(--main-green-color);
+    color: white;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+#username {
+    font-size: 3rem;
+}
+
+.high-scores-container {
+    height: 100%;
+    padding-top: 2rem;
+    background-color: rgb(45, 45, 45);
+}
+
+.drill-name {
+    font-size: 3rem;
+    color: var(--main-green-color);
+}
+
+.high-score-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.game-mode {
+    justify-self: end;
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.game-mode-score {
+    justify-self: start;
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.blitz {
+    color: var(--main-yellow-color);
+}
+
+.survival {
+    color: var(--main-red-color);
+}
+
+.twenty-hands {
+    color: var(--main-blue-color);
+}

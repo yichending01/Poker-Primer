@@ -1,0 +1,27 @@
+:root {
+    --card-red-color: rgb(231, 4, 4);
+    --main-blue-color: #3885ed;
+    --main-green-color: #358757;
+    --main-yellow-color: #eaac26;
+    --main-red-color: #d72b2b;
+    --off-green-color: #26633f;
+    --main-grey-color: rgb(45, 45, 45);
+}
+
+body {
+    background-color: var(--main-green-color);
+    color: white;
+    font-size: 2rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.login-form {
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+    display: block;
+}

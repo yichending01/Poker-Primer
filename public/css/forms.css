@@ -1,0 +1,40 @@
+:root {
+  --card-red-color: rgb(231, 4, 4);
+  --main-blue-color: #3885ed;
+  --main-green-color: #358757;
+  --main-yellow-color: #eaac26;
+  --main-red-color: #d72b2b;
+  --off-green-color: #26633f;
+  --main-grey-color: rgb(45, 45, 45);
+}
+
+.form-control {
+    margin: 1rem 0;
+  }
+  
+  .form-control label,
+  .form-control input,
+  .form-control textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+  
+  .form-control input,
+  .form-control textarea {
+    border: 1px solid #a1a1a1;
+    font: inherit;
+    border-radius: 2px;
+  }
+  
+  .form-control input:focus,
+  .form-control textarea:focus {
+    outline-color: var(--main-blue-color);
+
+  }
+
+  .form-control input.invalid {
+    border: 3px solid red;
+    background-color: rgb(246, 193, 193);;
+  }
+  
