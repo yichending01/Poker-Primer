@@ -17,11 +17,11 @@ const url = require('url'); ///
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-const MONGOBD_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.u68b6.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
+const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.u68b6.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
 
 const app = express();
 const store = new MongoDBStore({
-    uri: MONGOBD_URI,
+    uri: MONGODB_URI,
     collection: 'sessions'
 });
 
