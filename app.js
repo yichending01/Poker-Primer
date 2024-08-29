@@ -12,6 +12,8 @@ const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 
+const url = require('url'); /// 
+
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
@@ -92,16 +94,46 @@ app.use((error, req, res, next) => {
     });
 });
 
+// mongoose
+//     .connect(
+//         MONGOBD_URI
+//     )
+//     .then(result => {
+//         app.listen(process.env.PORT || 3000);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
+
+const proxy = url.parse(process.env.QUOTAGUARDSTATIC_URL);
+
+// Configure the connection options for Mongoose
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  tls: true,                 // Enable TLS for secure connections
+  tlsInsecure: true,         // Allow insecure connections for the proxy
+  proxy: {
+    host: proxy.hostname,
+    port: proxy.port || 80,
+    auth: {
+      username: proxy.auth.split(':')[0],
+      password: proxy.auth.split(':')[1],
+    }
+  }
+};
+
+// Update your Mongoose connection to use the QuotaGuard Static proxy
 mongoose
-    .connect(
-        MONGOBD_URI
-    )
-    .then(result => {
-        app.listen(process.env.PORT || 3000);
-    })
-    .catch(err => {
-        console.log(err);
+  .connect(MONGODB_URI, options)
+  .then(result => {
+    app.listen(process.env.PORT || 3000, () => {
+      console.log('Server is running on port', process.env.PORT || 3000);
     });
+  })
+  .catch(err => {
+    console.error('Failed to connect to MongoDB:', err);
+  });
 
 
 
