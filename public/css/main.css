@@ -4,6 +4,8 @@
   --main-green-color: #358757;
   --main-yellow-color: #eaac26;
   --main-red-color: #d72b2b;
+  --off-green-color: #26633f;
+  --main-dark-grey-color: rgb(20, 20, 20);
 }
 
 * {
@@ -110,32 +112,42 @@ main {
   font-size: 4rem;
   /* background-image: url("../assets/landing-img.webp");
   background-size: cover; */
-  background-color: var(--main-green-color);
+  background-color: var(--off-green-color);
   height: 60%;
   width: 100%;
 }
 
 #poker {
+  font-weight: 900;
   color: var(--main-red-color);
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: black;
 }
 
 
 #primer {
+  font-weight: 900;
   color: white;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: black;
 }
 
 
 .drills {
-  margin: 5rem 15%;
+  background-color: var(--main-dark-grey-color);
+  width: 100%;
+  padding: 3rem 15%;
 }
 
-#drills-title {
-  font-size: 1.8rem;
+#drills-title  {
+  font-size: 2rem;
+  color: white;
+  margin: 0;
+  padding: 0 0 1rem 0;
 }
-
 
 #tools-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 
