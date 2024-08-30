@@ -1,0 +1,152 @@
+:root {
+    --btn-grid-width: auto;
+}
+
+
+main {
+    background-color: var(--main-dark-grey-color);
+    color: white;
+    height: 100%;
+}
+
+h2 {
+    margin: 0;
+    text-align: center ;
+}
+
+.top-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    padding: 1.5rem 1rem;
+    margin: 0 15%;
+    gap: 0.5rem;
+}
+
+#back {
+    font-size: 1.5rem;
+    justify-self: start;
+    height: 2.5rem;
+}
+
+.top-text {
+    font-size: 2rem;
+}
+
+#best-hand-label {
+    justify-self: end;
+}
+
+#best-hand-eval {
+    justify-self: start;
+}
+
+
+#show-area-grid {
+    display: grid;
+    grid-template-columns: 1fr var(--btn-grid-width) 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: " . upper . "
+                         " . buttons . ";
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0 0 0;
+}
+
+#upper-show-area-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-area: upper;
+    align-items: center;
+    gap: 2rem;
+}
+
+#instructions {
+    font-size: 1.5rem;
+    align-self: start;
+}
+
+#instructions p {
+    margin: 1rem 0;
+}
+
+#max-msg {
+    color: var(--main-red-color);
+}
+
+.flashing {
+    animation: flash 0.5s linear 2;
+}
+
+#clear {
+    font-size: 1.5rem;
+    justify-self: start;
+    height: 2.5rem;
+}
+
+#button-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(13, 6vh);
+    margin: 0 auto;
+    padding: 0;
+    justify-items: center;
+    height: 40vh;
+    grid-area: buttons;
+    width: fit-content;
+}
+
+img {
+    width: 100%;
+}
+
+.cardBtn {
+    cursor: pointer;
+}
+
+.cardBtn:hover {
+    border: 3px solid var(--main-blue-color);
+}
+
+/* #card-grid-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+} */
+
+
+#card-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(5, 10vh);
+    grid-template-rows: repeat(2, 1fr);
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.not-in-best-hand {
+    filter: brightness(30%);
+}
+
+
+.selected {
+    filter: brightness(60%);
+}
+
+
+@keyframes flash {
+    0%, 100% {
+      opacity: 1; /* Fully visible */
+    }
+    50% {
+      opacity: 0; /* Hidden */
+    }
+}
+
+
+

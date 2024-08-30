@@ -20,7 +20,7 @@ const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO
 const app = express();
 const store = new MongoDBStore({
     uri: MONGODB_URI,
-    collection: 'sessions'
+    collection: 'sessions',
 });
 
 
@@ -53,6 +53,7 @@ const indexRoutes = require('./routes/index');
 const game01Routes = require('./routes/game-01');
 const authRoutes = require('./routes/auth');
 const dashboardRoutes = require('./routes/dashboard');
+const handEvaluatorRoutes = require('./routes/hand-evaluator')
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 
@@ -79,12 +80,14 @@ app.use(indexRoutes);
 app.use(game01Routes);
 app.use(authRoutes);
 app.use(dashboardRoutes);
+app.use(handEvaluatorRoutes);
 
 app.get('/500', errorController.get500);
 
 app.use(errorController.get404);
 
 app.use((error, req, res, next) => {
+    console.log(error);
     res.status(500).render('500', {
         pageTitle: 'Error!',
         path: '/500',
