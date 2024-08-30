@@ -437,11 +437,15 @@ function startStopwatch() {
 }
 
 function exit(gameMode) {
-    if (gameMode === 0) {
+    if (gameMode === BLITZ) {
         clearInterval(countdown);
     }
-    else if (gameMode === 2) {
+    else if (gameMode === TWENTYHANDS) {
         clearInterval(stopwatch);
+    }
+    else if (gameMode == ZEN) {
+        document.getElementById("result").style.display="none";
+        document.getElementById("next").style.display = "none";
     }
 
     pickGameModeScreen();

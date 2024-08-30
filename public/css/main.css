@@ -88,6 +88,7 @@ main {
   align-items: center;
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 
@@ -237,6 +238,23 @@ main {
 
 @media (max-width: 850px) {
 
+  .main-header {
+    padding: 1.1rem 5%; 
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+  }
+
+  .main-header__logo a {
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: white;
+    display: block;
+  }
+
   .main-nav {
     display: none;
   }
@@ -331,6 +349,19 @@ main {
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: black;
     font-size: 6rem;
+    margin: 0;
+  }
+
+  .drills {
+    background-color: var(--main-dark-grey-color);
+    width: 100%;
+    padding: 3rem 5%;
+  }
+  
+  .tools {
+    background-color: var(--main-blue-color);
+    width: 100%;
+    padding: 3rem 5%;
     margin: 0;
   }
 
