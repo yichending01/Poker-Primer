@@ -103,17 +103,16 @@ main {
 .landing {
   margin: 0;
   padding: 0;
-  height: 65%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   font-weight: 900;
   font-size: 4rem;
-  /* background-image: url("../assets/landing-img.webp");
+  /* background-image: url("../assets/landing-img.png");
   background-size: cover; */
   background-color: var(--off-green-color);
-  height: 60%;
   width: 100%;
 }
 
@@ -139,6 +138,13 @@ main {
   padding: 3rem 15%;
 }
 
+.tools {
+  background-color: var(--main-blue-color);
+  width: 100%;
+  padding: 3rem 15%;
+  margin: 0;
+}
+
 #drills-title  {
   font-size: 2rem;
   color: white;
@@ -148,10 +154,13 @@ main {
 
 #tools-title {
   font-size: 2rem;
+  color: black;
+  margin: 0;
+  padding: 0 0 1rem 0;
 }
 
 
-.drills-grid {
+.drills-grid, .tools-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
@@ -159,7 +168,7 @@ main {
 }
 
 
-.drill-item {
+.drill-item, .tool-item {
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -170,7 +179,7 @@ main {
   cursor: pointer;
 }
 
-.drill-item img {
+.drill-item img, .tool-item img {
   top: 0;
   left: 0;
   width: 100%;
@@ -180,15 +189,9 @@ main {
 }
 
 
-.drill-item:hover img {
+.drill-item:hover img, .tool-item:hover img {
   transform: scale(1.1);
 }
-
-
-.tools {
-  margin: 5rem 15%;
-}
-
 
 .user-message--error {
   margin: auto;

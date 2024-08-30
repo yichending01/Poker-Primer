@@ -57,6 +57,8 @@ function cardBtn(btnImg) {
         })
 
     } else {
+        document.getElementById("max-msg").style.display="none";
+
         btnImg.classList.remove("selected");
         btnImg.classList.add("not-selected");
         let cardImg = document.getElementById(btnId + "-card")
