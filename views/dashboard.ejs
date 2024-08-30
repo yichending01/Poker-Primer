@@ -11,7 +11,12 @@
         <div class="high-score-container" id="showdown-container">
             <p class="game-mode blitz">Blitz:</p> <p class="game-mode-score"><%= user.blitzHighScore %></p>
             <p class="game-mode survival">Survival:</p> <p class="game-mode-score"><%= user.survivalHighScore %></p>
-            <p class="game-mode twenty-hands">20-Hands:</p> <p class="game-mode-score"><%= user.twentyHandsHighScore %></p>
+            <% 
+                let m = parseInt(user.twentyHandsHighScore / 60, 10);
+                let s = parseInt(user.twentyHandsHighScore % 60, 10);
+                s = s < 10 ? "0" + s : s;
+            %>
+            <p class="game-mode twenty-hands">20-Hands:</p> <p class="game-mode-score"><%= m + ":" + s%></p>
         </div>
     </section>
 </body>

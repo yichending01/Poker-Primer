@@ -11,7 +11,7 @@ exports.getGame01 = (req, res, next) => {
 
 exports.updateHighScore = async (req, res, next) => {
     if (!req.session.isLoggedIn) {
-        return res.json({newHighScore: false, highScore: 0});
+        return res.json({newHighScore: false, highScore: "Login to save your high score!"});
     }
 
     const userId = req.session.user._id;
@@ -32,13 +32,21 @@ exports.updateHighScore = async (req, res, next) => {
         user.twentyHandsHighScore = score;
         await user.save();
         req.session.user = user;
-        return res.json({newHighScore: true, highScore: user.twentyHandsHighScore});
+        // convert to time
+        let m = parseInt(score / 60, 10);
+        let s = parseInt(score % 60, 10);
+        s = s < 10 ? "0" + s : s;
+        return res.json({newHighScore: true, highScore: m + ":" + s});
     } else if (gameMode === 0) {
         return res.json({newHighScore: false, highScore: user.blitzHighScore});
     } else if (gameMode === 1) {
         return res.json({newHighScore: false, highScore: user.survivalHighScore});
     } else if (gameMode === 2) {
-        return res.json({newHighScore: false, highScore: user.twentyHandsHighScore});
+        // convert to time
+        let m = parseInt(user.twentyHandsHighScore / 60, 10);
+        let s = parseInt(user.twentyHandsHighScore % 60, 10);
+        s = s < 10 ? "0" + s : s;
+        return res.json({newHighScore: false, highScore: m + ":" + s});
     }
 }
 
