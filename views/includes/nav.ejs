@@ -1,9 +1,16 @@
-<nav class="main-nav">
-    <ul class="main-nav__items">
-        <div class="main-nav__logo-container">        
-            <li class="main-nav__logo"><a href="/" id="logo">PP</a></li>
+<header class="main-header">
+    <div class="main-header-left">
+        <button class="toggle-button">
+            <span class="toggle-button__bar"></span>
+            <span class="toggle-button__bar"></span>
+            <span class="toggle-button__bar"></span>
+        </button>
+        <div class="main-header__logo-container">        
+            <li class="main-header__logo"><a href="/" id="logo">PP</a></li>
         </div>
-        <div class="main-nav__item-container">
+    </div>
+    <nav class="main-nav">
+        <ul class="main-nav__items">
             <% if (isLoggedIn) { %>
                 <li class="main-nav__item"><a href="/dashboard">Dashboard</a></li>
                 <li class="main-nav__item"><form action="/logout" method="post">
@@ -14,6 +21,23 @@
                 <li class="main-nav__item"><a href="/signup">Sign Up</a></li>
                 <li class="main-nav__item"><a href="/login" class="btn">Login</a></li>
             <% } %>
-        </div>
+        </ul>
+    </nav>
+</header>
+
+<nav class="mobile-nav">
+    <ul class="mobile-nav__items">
+        <% if (isLoggedIn) { %>
+            <li class="mobile-nav__item"><a href="/dashboard">Dashboard</a></li>
+            <li class="mobile-nav__item"><form action="/logout" method="post">
+                <button type="submit" class="btn">Logout</button>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </form></li>
+        <% } else { %>
+            <li class="mobile-nav__item"><a href="/signup">Sign Up</a></li>
+            <li class="mobile-nav__item"><a href="/login" class="btn">Login</a></li>
+        <% } %>
     </ul>
 </nav>
+
+<div id="backdrop"></div>
