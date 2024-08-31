@@ -12,11 +12,17 @@
             <p class="game-mode blitz">Blitz:</p> <p class="game-mode-score"><%= user.blitzHighScore %></p>
             <p class="game-mode survival">Survival:</p> <p class="game-mode-score"><%= user.survivalHighScore %></p>
             <% 
-                let m = parseInt(user.twentyHandsHighScore / 60, 10);
-                let s = parseInt(user.twentyHandsHighScore % 60, 10);
-                s = s < 10 ? "0" + s : s;
+                let twHighScore;
+                if (user.twentyHandsHighScore === 10000) {
+                    twHighScore = "Not Played Yet";
+                } else {
+                    let m = parseInt(user.twentyHandsHighScore / 60, 10);
+                    let s = parseInt(user.twentyHandsHighScore % 60, 10);
+                    s = s < 10 ? "0" + s : s;
+                    twHighScore = m + ":" + s
+                }
             %>
-            <p class="game-mode twenty-hands">20-Hands:</p> <p class="game-mode-score"><%= m + ":" + s%></p>
+            <p class="game-mode twenty-hands">20-Hands:</p> <p class="game-mode-score"><%= twHighScore %></p>
         </div>
     </section>
     <script src="/js/shared.js"></script>

@@ -17,6 +17,13 @@ window.onload = function() {
 
     document.getElementById("start-screen-back").addEventListener("click", pickGameModeScreen);
     document.getElementById("game-mode-back").addEventListener("click", gameModeBack);
+    document.getElementById("how-to-play").addEventListener("click", howToPlay);
+    document.getElementById("how-to-play-close").addEventListener("click", howToPlayClose);
+    document.getElementById("player-1-cards-howto").addEventListener("click", p1HowTo);
+    document.getElementById("player-2-cards-howto").addEventListener("click", p2HowTo);
+    document.getElementById("tie-howto").addEventListener("click", tieHowTo);
+    document.getElementById("showdown-backdrop").addEventListener("click", howToPlayClose);
+
 }
 
 
@@ -297,7 +304,7 @@ function submitScore(gameMode) {
     let finalScore;
 
     if (gameMode === TWENTYHANDS) {
-        finalScore = duration;
+        finalScore = minutes*60 + seconds;
     } else {
         finalScore = score;
     }
@@ -326,7 +333,6 @@ function submitScore(gameMode) {
 }
 
 function gameOverScreen(gameMode) {
-    submitScore(gameMode);
 
     if (gameMode === BLITZ) {
         clearInterval(countdown);
@@ -341,6 +347,8 @@ function gameOverScreen(gameMode) {
         document.getElementById("timer").style.display = "none";
 
     }
+
+    submitScore(gameMode);
 
     document.getElementById("game-over-screen").style.display = "block";
     document.getElementById("game-area").style.display = "none";
@@ -403,6 +411,33 @@ function zenStartScreen() {
 
     document.getElementById("game-01-start").onclick = () => { startGame(ZEN) };
     document.getElementById("exit").onclick = () => { exit(ZEN); };
+}
+
+
+function howToPlay() {
+    document.getElementById("showdown-backdrop").style.display = "block";
+    document.getElementById("how-to-play-popup").style.display = "block";
+}
+
+function howToPlayClose() {
+    document.getElementById("showdown-backdrop").style.display = "none";
+    document.getElementById("how-to-play-popup").style.display = "none";
+}
+
+
+function p1HowTo() {
+    document.getElementById("howto-ex-feedback").innerText = "Player 1 is incorrect! Try Again."
+    // document.getElementById("howto-ex-feedback").style.display = "block";
+}
+
+function p2HowTo() {
+    document.getElementById("howto-ex-feedback").innerText = "Player 2 is CORRECT! Three of a kind beats Two Pair."
+    // document.getElementById("howto-ex-feedback").style.display = "block";
+}
+
+function tieHowTo() {
+    document.getElementById("howto-ex-feedback").innerText = "Tie is incorrect! Try Again."
+    // document.getElementById("howto-ex-feedback").style.display = "block";
 }
 
 

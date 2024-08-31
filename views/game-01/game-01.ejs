@@ -7,10 +7,69 @@
     <body>
         <%- include('../includes/nav.ejs') %>
         <main>
+            <div id="showdown-backdrop"></div>
             <div id="game-modes">
                 <div id="game-mode-top-bar">
                     <button id="game-mode-back" class="btn">Back</button>
                     <h1 class="game-title">SHOWDOWN</h1>
+                    <button id="how-to-play" class="btn">HOW TO PLAY</button>
+                </div>
+                <div id="how-to-play-popup">
+                    <h2>How to Play: SHOWDOWN</h2>
+                    <p>Welcome to <b>Showdown</b> &mdash; a game designed to help you master poker hand rankings!</p>
+
+                    <p>(Need a refresher on hand rankings? Check out <a href="/articles/hand-rankings">Understanding Hand Rankings</a> for more details.)</p>
+                    
+                    <h3>Objective</h3>
+                    <p>Your goal is to determine the winning hand in a poker showdown. You'll see the <a href="/articles/poker-lingo">hole cards</a> of two players and five <a href="/articles/poker-lingo">community cards</a>. Decide which player has the strongest hand (or if they tie!)</p>
+
+                    <h3>Example</h3>
+                    <p>In the example below, the situation is Player 1's Ace King v.s. Player 2's pair of eights. Based on hand rankings, click on the winning player or tie
+                        if they are equally matched. A message at the bottom will display if you are correct.
+                    </p>
+
+                    <div class="board-wrapper-howto">
+                        <h3>BOARD</h3>
+                        <div id="board-cards-howto">
+                            <img src="/assets/cards/A-H.png">
+                            <img src="/assets/cards/9-C.png">
+                            <img src="/assets/cards/2-D.png">
+                            <img src="/assets/cards/K-D.png">
+                            <img src="/assets/cards/8-S.png">
+                        </div>
+                    </div>
+                    <div class="player-cards-wrapper-howto">
+                        
+                        <div class="player-cards-howto" id="player-1-container-howto">
+                            <h3>PLAYER 1</h3>
+                            <div id="player-1-cards-howto">
+                                <img src="/assets/cards/A-S.png">
+                                <img src="/assets/cards/K-H.png">
+                            </div>
+                        </div>
+        
+                        <p id="tie-howto" class="btn">TIE</p>
+        
+                        <div class="player-cards-howto" id="player-2-container-howto">
+                            <h3>PLAYER 2</h3>
+                            <div id="player-2-cards-howto">
+                                <img src="/assets/cards/8-C.png">
+                                <img src="/assets/cards/8-H.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p id="howto-ex-feedback"></p>
+
+                    <h3>Game Modes</h3>
+                    <p>Ready to play? Choose a game mode and get started. Race against the clock with <i><b>Blitz</b></i> or <i><b>20-Hands</b></i>, see how long you can keep a 
+                        streak going with <i><b>Survival</b></i>, or have a relaxing practice session with <i><b>Zen</b></i>.
+                    </p>
+
+                    <h3>Play</h3>
+                    <p>Dive into Showdown and see if you can pick the winner every time!</p>
+
+                    <button class="btn" id="how-to-play-close">Close</button>
                 </div>
                 <h1 id="choose-text">Choose a Game Mode</h1>
                 <div class="game-mode-grid">

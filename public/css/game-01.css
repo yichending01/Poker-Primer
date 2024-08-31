@@ -25,12 +25,25 @@ main {
     height: 100%;
 }
 
+#showdown-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 70%;
+    z-index: 101;
+}
+
 #game-mode-top-bar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     padding: 1.5rem 1rem;
     margin: 0 15%;
+    gap: 1rem;
 }
 
 #game-mode-back {
@@ -39,12 +52,111 @@ main {
     height: 2.5rem;
 }
 
+#how-to-play {
+    width: fit-content;
+    height: fit-content;
+    font-size: 1.5rem;
+    justify-self: end;
+    padding: 0.5rem;
+}
+
 .game-title {
     color: var(--main-green-color);
     padding: 0;
     margin: 0;
     font-size: 3rem;
 }
+
+
+#how-to-play-popup {
+    display: none;
+    position: fixed; /* Position relative to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset the position by 50% of the element's height and width */
+    width: 60vw; /* Set a width for the popup */
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 20px; /* Padding inside the popup */
+    background-color: var(--off-green-color); /* Background color */
+    color: white;
+    text-align: left;
+    border: 5px solid var(--main-yellow-color); /* Border styling */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for a popup effect */
+    z-index: 1000; /* Ensures the popup is above other content */
+}
+
+#how-to-play-popup h2 {
+    font-size: 2rem;
+    margin: 0.5rem 0 1rem 0;
+}
+
+#how-to-play-popup h3 {
+    font-size: 1.8rem;
+    margin: 1.2rem 0 0.5rem 0;
+}
+
+#how-to-play-popup p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+#how-to-play-popup a {
+    /* text-decoration: none; */
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--main-yellow-color);
+}
+
+.board-wrapper-howto {
+    text-align: center;
+}
+
+#player-1-container-howto h3,
+#player-2-container-howto h3 {
+    margin: 1rem 0;
+}
+
+#player-1-cards-howto img,
+#player-2-cards-howto img,
+#board-cards-howto img {
+    width: 5vw;
+}
+
+.player-cards-wrapper-howto {
+    display: grid;
+    grid-template-columns: 4fr 1fr 4fr;
+    margin: 0 auto;
+    align-items: center;
+    gap: 5px;
+}
+
+.player-cards-howto {
+    text-align: center;
+}
+
+
+#tie-howto {
+    justify-self: center;
+}
+
+#howto-ex-feedback {
+    display: block;
+    text-align: center;
+    padding: 1rem 0;
+    margin: 1rem 0;
+}
+
+#how-to-play-close {
+    display: block;
+    margin: 1rem auto 0 auto;
+    font-size: 1.5rem;
+}
+
 
 #choose-text {
     margin: 1.5rem 0 3rem 0;
@@ -213,11 +325,13 @@ transform: scale(1.1);
     margin: 0 1rem;
 }
 
-#player-1-container {
+#player-1-container,
+#player-1-container-howto {
     justify-self: end;
 }
 
-#player-2-container {
+#player-2-container,
+#player-2-container-howto {
     justify-self: start;
 }
 
@@ -230,11 +344,17 @@ transform: scale(1.1);
     border-radius: 5px;
 }
 
-#player-1-cards, #player-2-cards {
+#player-1-cards, 
+#player-2-cards,
+#player-1-cards-howto,
+#player-2-cards-howto {
     cursor: pointer;
 }
 
-#player-1-cards:hover, #player-2-cards:hover {
+#player-1-cards:hover, 
+#player-2-cards:hover,
+#player-1-cards-howto:hover,
+#player-2-cards-howto:hover {
     transform: scale(1.1);
 }
 
@@ -310,6 +430,99 @@ transform: scale(1.1);
         justify-content: center;
         padding: 1.5rem 1rem;
         margin: 0 5%;
+    }
+
+    #how-to-play-popup {
+        display: none;
+        position: fixed; /* Position relative to the viewport */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%); /* Offset the position by 50% of the element's height and width */
+        width: 100vw; /* Set a width for the popup */
+        height: 90vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 20px; /* Padding inside the popup */
+        background-color: var(--off-green-color); /* Background color */
+        color: white;
+        text-align: left;
+        border: 5px solid var(--main-yellow-color); /* Border styling */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for a popup effect */
+        z-index: 1000; /* Ensures the popup is above other content */
+    }
+    
+    #how-to-play-popup h2 {
+        font-size: 1.8rem;
+        margin: 0.5rem 0 1rem 0;
+    }
+    
+    #how-to-play-popup h3 {
+        font-size: 1.5rem;
+        margin: 1.2rem 0 0.5rem 0;
+    }
+    
+    #how-to-play-popup p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+    
+    #how-to-play-popup a {
+        /* text-decoration: none; */
+        line-height: 1.5;
+        margin: 0;
+        color: var(--main-yellow-color);
+    }
+    
+    .board-wrapper-howto {
+        text-align: center;
+    }
+
+    .board-wrapper-howto h3 {
+        font-size: 1rem;
+    };
+    
+    #player-1-container-howto h3,
+    #player-2-container-howto h3 {
+        font-size: 1rem;
+        margin: 1rem 0;
+    }
+    
+    #player-1-cards-howto img,
+    #player-2-cards-howto img,
+    #board-cards-howto img {
+        width: 15vw;
+    }
+    
+    .player-cards-wrapper-howto {
+        display: grid;
+        grid-template-columns: 4fr 1fr 4fr;
+        margin: 0 auto;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .player-cards-howto {
+        text-align: center;
+    }
+    
+    
+    #tie-howto {
+        justify-self: center;
+    }
+    
+    #howto-ex-feedback {
+        display: block;
+        text-align: center;
+        padding: 1rem 0;
+        margin: 1rem 0;
+    }
+    
+    #how-to-play-close {
+        display: block;
+        margin: 1rem auto 0 auto;
+        font-size: 1.5rem;
     }
 
     .game-mode-item {
