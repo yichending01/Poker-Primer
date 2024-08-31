@@ -308,6 +308,21 @@ transform: scale(1.1);
     padding: 0.5rem 0.5rem;
 }
 
+/* Flash animation */
+@keyframes flash-border {
+    0%, 100% {
+      border-color: var(--main-yellow-color); /* Original border color */
+    }
+    50% {
+      border-color: var(--card-red-color); /* Flash border color */
+    }
+}
+  
+/* Class to trigger the animation */
+.flash {
+    animation: flash-border 0.2s linear 0s 3;
+}
+
 
 #game-area h2 {
     font-size: 2rem;
@@ -329,8 +344,12 @@ transform: scale(1.1);
 }
 
 #board-cards img {
-    width: 9vw;
+    width: 8vw;
     margin: 4px;
+}
+
+.selected {
+    color: var(--main-yellow-color);
 }
 
 .player-cards-wrapper {
@@ -379,17 +398,26 @@ transform: scale(1.1);
 }
 
 #player-1-cards img {
-    width: 9vw;
+    width: 8vw;
     margin: 4px;
 }
 
 #player-2-cards img {
-    width: 9vw;
+    width: 8vw;
     margin: 4px;
+}
+
+
+#indicator {
+    display: none;
+    font: inherit;
+    font-size: 3rem;
+    margin: 0.5rem auto;
 }
 
 .result-wrapper {
     text-align: center;
+    margin: 0 15%;
 }
 
 #result {
@@ -438,6 +466,9 @@ transform: scale(1.1);
     font-size: 2rem;
     color: var(--main-red-color);
 }
+
+
+
 
 
 @media (max-width: 750px) {
@@ -654,6 +685,11 @@ transform: scale(1.1);
         justify-self: center;
         border-radius: 5px;
         padding: 0.5rem;
+    }
+
+    .result-wrapper {
+        text-align: center;
+        margin: 0 5%;
     }
 
     #result {

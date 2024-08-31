@@ -174,11 +174,11 @@ function pokerHandFromInput(inputVal) {
 
     if (cardList.length > 10) {
         maxMsg = document.getElementById("max-msg");
-            maxMsg.style.display="block";
-            maxMsg.classList.remove("flashing");
-            void maxMsg.offsetWidth;
-            maxMsg.classList.add("flashing");
-            return;
+        maxMsg.style.display="block";
+        maxMsg.classList.remove("flashing");
+        void maxMsg.offsetWidth;
+        maxMsg.classList.add("flashing");
+        return;
     }
 
     clearForInput();

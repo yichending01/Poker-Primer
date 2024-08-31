@@ -1,6 +1,7 @@
 class PokerUtils {
     static suitsMap = {"S": 1, "C": 2, "H": 4, "D": 8};
     static rankMap = {"2": 2, "3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9, "10":10, "J": 11, "Q": 12, "K":13, "A":14};
+    static rankMapReverse = {2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "Jack", 12: "Queen", 13: "King", 14: "Ace"};
     static handTypes = ["Royal Flush", "Straight Flush", "Four of a Kind", "Full House", "Flush", "Straight", "Three of a Kind", "Two Pair", "Pair", "High Card"];
     static handsMap = {4:9, 5:8, 6:7, 8:6, 2:5, 3:4, 9:3, 0:2, 1:1, 7:0};
 
@@ -222,7 +223,213 @@ class PokerUtils {
         });
     }
 
+
+    static breakTieMsg(handsPlace, hand1, hand2) {
+        /* 
+        Takes two hands of the same place and gives a descriptive message about
+        how the tie is broken or why it is a tie.
+
+        Inputs:
+            handsPlace: int describing the place of the hand in the handsType array
+            hand1: array of 5 cards representing a hand
+            hand2: array of 5 cards representing a hand of the same type as hand1
+        
+        Outputs:
+            msg: a string containing a descriptive message of the tie(breaker)
+        */
+
+        let msg = "no message assigned"; // default for error checking
+
+        let cs1 = [];
+        let cs2 = [];
+        for (let k=0; k < 5; k++) {
+            cs1.push(hand1[k].rank);
+            cs2.push(hand2[k].rank);
+        }
+
+        let cs1Sorted = this.tieSort(cs1);
+        let cs2Sorted = this.tieSort(cs2);
+
+        switch (handsPlace) {
+            case 0: // Royal Flush
+                msg = "Royal Flush ties Royal Flush";
+                break;
+            case 1: // Straight Flush
+                if (cs1Sorted[0] === cs2Sorted[0]) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Straight Flush ties ${this.rankMapReverse[cs2Sorted[0]]} high Straight Flush`;
+                } else if (cs1Sorted[0] < cs2Sorted[0] && !this.arraysEqual(cs2Sorted, [14, 5, 4, 3, 2])) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Straight Flush beats ${this.rankMapReverse[cs1Sorted[0]]} high Straight Flush`;
+                } else if (cs1Sorted[0] > cs2Sorted[0] && !this.arraysEqual(cs1Sorted, [14, 5, 4, 3, 2])) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Straight Flush beats ${this.rankMapReverse[cs2Sorted[0]]} high Straight Flush`;
+                } else if (cs1Sorted[0] === 14) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Straight Flush beats ${this.rankMapReverse[cs1Sorted[0]]} high Straight Flush`;
+                } else {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Straight Flush beats ${this.rankMapReverse[cs2Sorted[0]]} high Straight Flush`;
+                }
+                break;
+            case 2: // Four of a Kind
+                if (cs1Sorted[0] > cs2Sorted[0]) {
+                    msg = `Four of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s beats Four of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s`;
+                } else if (cs1Sorted[0] < cs2Sorted[0]) {
+                    msg = `Four of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s beats Four of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s`;
+                } else { // equal, check for kicker
+                    if (cs1Sorted[4] > cs2Sorted[4]) {
+                        msg = `Four of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[4]]} kicker beats Four of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[4]]} kicker`;
+                    } else if (cs1Sorted[4] < cs2Sorted[4]) {
+                        msg = `Four of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[4]]} kicker beats Four of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[4]]} kicker`;
+                    } else {
+                        msg = `Four of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s ties Four of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s`;
+                    }
+                }
+                break;
+            case 3: // Full House
+                if (cs1Sorted[0] > cs2Sorted[0]) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]}s full of ${this.rankMapReverse[cs1Sorted[4]]}s Full House beats ${this.rankMapReverse[cs2Sorted[0]]}s full of ${this.rankMapReverse[cs2Sorted[4]]} Full House`;
+                } else if (cs1Sorted[0] < cs2Sorted[0]) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]}s full of ${this.rankMapReverse[cs2Sorted[4]]}s Full House beats ${this.rankMapReverse[cs1Sorted[0]]}s full of ${this.rankMapReverse[cs1Sorted[4]]} Full House`;
+                } else if (cs1Sorted[4] > cs2Sorted[4]) { // 3 of a kind equal, look at pair
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]}s full of ${this.rankMapReverse[cs1Sorted[4]]}s Full House beats ${this.rankMapReverse[cs2Sorted[0]]}s full of ${this.rankMapReverse[cs2Sorted[4]]} Full House`;
+                } else if (cs1Sorted[4] < cs2Sorted[4]) { // 3 of a kind equal, look at pair
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]}s full of ${this.rankMapReverse[cs2Sorted[4]]}s Full House beats ${this.rankMapReverse[cs1Sorted[0]]}s full of ${this.rankMapReverse[cs1Sorted[4]]} Full House`;
+                } else { // all equal - tie
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]}s full of ${this.rankMapReverse[cs2Sorted[4]]}s Full House ties ${this.rankMapReverse[cs1Sorted[0]]}s full of ${this.rankMapReverse[cs1Sorted[4]]} Full House`;
+                }
+                break;
+            case 4: // Flush
+                if (cs1Sorted[0] > cs2Sorted[0]) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Flush beats ${this.rankMapReverse[cs2Sorted[0]]} high Flush`;
+                } else if (cs1Sorted[0] < cs2Sorted[0]) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Flush beats ${this.rankMapReverse[cs1Sorted[0]]} high Flush`;
+                } else if (cs1Sorted[1] > cs2Sorted[1]) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Flush with ${this.rankMapReverse[cs1Sorted[1]]} kicker beats ${this.rankMapReverse[cs2Sorted[0]]} high Flush with ${this.rankMapReverse[cs2Sorted[1]]} kicker`;
+                } else if (cs1Sorted[1] < cs2Sorted[1]) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Flush with ${this.rankMapReverse[cs2Sorted[1]]} kicker beats ${this.rankMapReverse[cs1Sorted[0]]} high Flush with ${this.rankMapReverse[cs1Sorted[1]]} kicker`;
+                } else if (cs1Sorted[2] > cs2Sorted[2]) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Flush with ${this.rankMapReverse[cs1Sorted[2]]} kicker beats ${this.rankMapReverse[cs2Sorted[0]]} high Flush with ${this.rankMapReverse[cs2Sorted[2]]} kicker`;
+                } else if (cs1Sorted[2] < cs2Sorted[2]) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Flush with ${this.rankMapReverse[cs2Sorted[2]]} kicker beats ${this.rankMapReverse[cs1Sorted[0]]} high Flush with ${this.rankMapReverse[cs1Sorted[2]]} kicker`;
+                } else if (cs1Sorted[3] > cs2Sorted[3]) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Flush with ${this.rankMapReverse[cs1Sorted[3]]} kicker beats ${this.rankMapReverse[cs2Sorted[0]]} high Flush with ${this.rankMapReverse[cs2Sorted[3]]} kicker`;
+                } else if (cs1Sorted[3] < cs2Sorted[3]) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Flush with ${this.rankMapReverse[cs2Sorted[3]]} kicker beats ${this.rankMapReverse[cs1Sorted[0]]} high Flush with ${this.rankMapReverse[cs1Sorted[3]]} kicker`;
+                } else if (cs1Sorted[4] > cs2Sorted[4]) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Flush with ${this.rankMapReverse[cs1Sorted[4]]} kicker beats ${this.rankMapReverse[cs2Sorted[0]]} high Flush with ${this.rankMapReverse[cs2Sorted[4]]} kicker`;
+                } else if (cs1Sorted[4] < cs2Sorted[4]) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Flush with ${this.rankMapReverse[cs2Sorted[4]]} kicker beats ${this.rankMapReverse[cs1Sorted[0]]} high Flush with ${this.rankMapReverse[cs1Sorted[4]]} kicker`;
+                } else { // equal
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Flush ties ${this.rankMapReverse[cs1Sorted[0]]} high Flush`;
+                }
+                break;
+            case 5: // Straight
+                if (cs1Sorted[0] === cs2Sorted[0]) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Straight ties ${this.rankMapReverse[cs2Sorted[0]]} high Straight`;
+                } else if (cs1Sorted[0] < cs2Sorted[0] && !this.arraysEqual(cs2Sorted, [14, 5, 4, 3, 2])) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Straight beats ${this.rankMapReverse[cs1Sorted[0]]} high Straight`;
+                } else if (cs1Sorted[0] > cs2Sorted[0] && !this.arraysEqual(cs1Sorted, [14, 5, 4, 3, 2])) {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Straight beats ${this.rankMapReverse[cs2Sorted[0]]} high Straight`;
+                } else if (cs1Sorted[0] === 14) {
+                    msg = `${this.rankMapReverse[cs2Sorted[0]]} high Straight beats ${this.rankMapReverse[cs1Sorted[0]]} high Straight`;
+                } else {
+                    msg = `${this.rankMapReverse[cs1Sorted[0]]} high Straight beats ${this.rankMapReverse[cs2Sorted[0]]} high Straight`;
+                }
+                break;
+            case 6: // Three of a Kind
+                if (cs1Sorted[0] > cs2Sorted[0]) {
+                    msg = `Three of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s beats Three of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s`;
+                } else if (cs1Sorted[0] < cs2Sorted[0]) {
+                    msg = `Three of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s beats Three of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s`;
+                } else if (cs1Sorted[3] > cs2Sorted[3]) { // trips equal, look for kickers
+                    msg = `Three of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[3]]} kicker beats Three of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[3]]} kicker`;
+                } else if (cs1Sorted[3] < cs2Sorted[3]) { // trips equal, look for kickers
+                    msg = `Three of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[3]]} kicker beats Three of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[3]]} kicker`;
+                } else if (cs1Sorted[4] > cs2Sorted[4]) { // trips and first kicker equal, look at last kicker
+                    msg = `Three of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[4]]} kicker beats Three of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[4]]} kicker`;
+                } else if (cs1Sorted[4] < cs2Sorted[4]) { // trips and first kicker equal, look at last kicker
+                    msg = `Three of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[4]]} kicker beats Three of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[4]]} kicker`;
+                } else { // all cards equal
+                    msg = `Three of a Kind ${this.rankMapReverse[cs1Sorted[0]]}s ties Three of a Kind ${this.rankMapReverse[cs2Sorted[0]]}s`;
+                }
+                break;
+            case 7: // Two Pair
+                if (cs1Sorted[0] > cs2Sorted[0]) {
+                    msg = `Two Pair of ${this.rankMapReverse[cs1Sorted[0]]}s and ${this.rankMapReverse[cs1Sorted[2]]}s beats Two Pair of ${this.rankMapReverse[cs2Sorted[0]]}s and ${this.rankMapReverse[cs2Sorted[2]]}s`;
+                } else if (cs1Sorted[0] < cs2Sorted[0]) {
+                    msg = `Two Pair of ${this.rankMapReverse[cs2Sorted[0]]}s and ${this.rankMapReverse[cs2Sorted[2]]}s beats Two Pair of ${this.rankMapReverse[cs1Sorted[0]]}s and ${this.rankMapReverse[cs1Sorted[2]]}s`;
+                } else if (cs1Sorted[2] > cs2Sorted[2]) {
+                    msg = `Two Pair of ${this.rankMapReverse[cs1Sorted[0]]}s and ${this.rankMapReverse[cs1Sorted[2]]}s beats Two Pair of ${this.rankMapReverse[cs2Sorted[0]]}s and ${this.rankMapReverse[cs2Sorted[2]]}s`;
+                } else if (cs1Sorted[2] < cs2Sorted[2]) {
+                    msg = `Two Pair of ${this.rankMapReverse[cs2Sorted[0]]}s and ${this.rankMapReverse[cs2Sorted[2]]}s beats Two Pair of ${this.rankMapReverse[cs1Sorted[0]]}s and ${this.rankMapReverse[cs1Sorted[2]]}s`;
+                } else if (cs1Sorted[4] > cs2Sorted[4]) {
+                    msg = `Two Pair of ${this.rankMapReverse[cs1Sorted[0]]}s and ${this.rankMapReverse[cs1Sorted[2]]}s with ${this.rankMapReverse[cs1Sorted[4]]} kicker beats Two Pair of ${this.rankMapReverse[cs2Sorted[0]]}s and ${this.rankMapReverse[cs2Sorted[2]]}s with ${this.rankMapReverse[cs2Sorted[4]]} kicker`;
+                } else if (cs1Sorted[4] < cs2Sorted[4]) {
+                    msg = `Two Pair of ${this.rankMapReverse[cs2Sorted[0]]}s and ${this.rankMapReverse[cs2Sorted[2]]}s with ${this.rankMapReverse[cs2Sorted[4]]} kicker beats Two Pair of ${this.rankMapReverse[cs1Sorted[0]]}s and ${this.rankMapReverse[cs1Sorted[2]]}s with ${this.rankMapReverse[cs1Sorted[4]]} kicker`;
+                } else { // all equal - tie
+                    msg = `Two Pair of ${this.rankMapReverse[cs1Sorted[0]]}s and ${this.rankMapReverse[cs1Sorted[2]]}s ties Two Pair of ${this.rankMapReverse[cs2Sorted[0]]}s and ${this.rankMapReverse[cs2Sorted[2]]}s`;
+                }
+                break;
+            case 8: // Pair
+                if (cs1Sorted[0] > cs2Sorted[0]) {
+                    msg = `Pair of ${this.rankMapReverse[cs1Sorted[0]]}s beats Pair of ${this.rankMapReverse[cs2Sorted[0]]}s`;
+                } else if (cs1Sorted[0] < cs2Sorted[0]) {
+                    msg = `Pair of ${this.rankMapReverse[cs2Sorted[0]]}s beats Pair of ${this.rankMapReverse[cs1Sorted[0]]}s`;
+                } else if (cs1Sorted[2] > cs2Sorted[2]) { // pairs equal, look for kickers
+                    msg = `Pair of ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[2]]} kicker beats Pair of ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[2]]} kicker`;
+                } else if (cs1Sorted[2] < cs2Sorted[2]) { // pairs equal, look for kickers
+                    msg = `Pair of ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[2]]} kicker beats Pair of ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[2]]} kicker`;
+                } else if (cs1Sorted[3] > cs2Sorted[3]) { // pairs and first kicker equal, look at next kicker
+                    msg = `Pair of ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[3]]} kicker beats Pair of ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[3]]} kicker`;
+                } else if (cs1Sorted[3] < cs2Sorted[3]) { // trips and first kicker equal, look at last kicker
+                    msg = `Pair of ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[3]]} kicker beats Pair of ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[3]]} kicker`;
+                } else if (cs1Sorted[4] > cs2Sorted[4]) {
+                    msg = `Pair of ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[4]]} kicker beats Pair of ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[4]]} kicker`;
+                } else if(cs1Sorted[4] < cs2Sorted[4]) {
+                    msg = `Pair of ${this.rankMapReverse[cs2Sorted[0]]}s with ${this.rankMapReverse[cs2Sorted[4]]} kicker beats Pair of ${this.rankMapReverse[cs1Sorted[0]]}s with ${this.rankMapReverse[cs1Sorted[4]]} kicker`;
+                } else { // all cards equal
+                    msg = `Pair of ${this.rankMapReverse[cs1Sorted[0]]}s ties Pair of ${this.rankMapReverse[cs2Sorted[0]]}s`;
+                }
+                break;
+            case 9: // High Card
+                if (cs1Sorted[0] > cs2Sorted[0]) {
+                    msg = `High Card ${this.rankMapReverse[cs1Sorted[0]]} beats High Card ${this.rankMapReverse[cs2Sorted[0]]}`;
+                } else if (cs1Sorted[0] < cs2Sorted[0]) {
+                    msg = `High Card ${this.rankMapReverse[cs2Sorted[0]]} beats High Card ${this.rankMapReverse[cs1Sorted[0]]}`;
+                } else if (cs1Sorted[1] > cs2Sorted[1]) {
+                    msg = `High Card ${this.rankMapReverse[cs1Sorted[0]]} with ${this.rankMapReverse[cs1Sorted[1]]} kicker beats High Card ${this.rankMapReverse[cs2Sorted[0]]} with ${this.rankMapReverse[cs2Sorted[1]]} kicker`;
+                } else if (cs1Sorted[1] < cs2Sorted[1]) {
+                    msg = `High Card ${this.rankMapReverse[cs2Sorted[0]]} with ${this.rankMapReverse[cs2Sorted[1]]} kicker beats High Card ${this.rankMapReverse[cs1Sorted[0]]} with ${this.rankMapReverse[cs1Sorted[1]]} kicker`;
+                } else if (cs1Sorted[2] > cs2Sorted[2]) {
+                    msg = `High Card ${this.rankMapReverse[cs1Sorted[0]]} with ${this.rankMapReverse[cs1Sorted[2]]} kicker beats High Card ${this.rankMapReverse[cs2Sorted[0]]} with ${this.rankMapReverse[cs2Sorted[2]]} kicker`;
+                } else if (cs1Sorted[2] < cs2Sorted[2]) {
+                    msg = `High Card ${this.rankMapReverse[cs2Sorted[0]]} with ${this.rankMapReverse[cs2Sorted[2]]} kicker beats High Card ${this.rankMapReverse[cs1Sorted[0]]} with ${this.rankMapReverse[cs1Sorted[2]]} kicker`;
+                } else if (cs1Sorted[3] > cs2Sorted[3]) {
+                    msg = `High Card ${this.rankMapReverse[cs1Sorted[0]]} with ${this.rankMapReverse[cs1Sorted[3]]} kicker beats High Card ${this.rankMapReverse[cs2Sorted[0]]} with ${this.rankMapReverse[cs2Sorted[3]]} kicker`;
+                } else if (cs1Sorted[3] < cs2Sorted[3]) {
+                    msg = `High Card ${this.rankMapReverse[cs2Sorted[0]]} with ${this.rankMapReverse[cs2Sorted[3]]} kicker beats High Card ${this.rankMapReverse[cs1Sorted[0]]} with ${this.rankMapReverse[cs1Sorted[3]]} kicker`;
+                } else if (cs1Sorted[4] > cs2Sorted[4]) {
+                    msg = `High Card ${this.rankMapReverse[cs1Sorted[0]]} with ${this.rankMapReverse[cs1Sorted[4]]} kicker beats High Card ${this.rankMapReverse[cs2Sorted[0]]} with ${this.rankMapReverse[cs2Sorted[4]]} kicker`;
+                } else if (cs1Sorted[4] < cs2Sorted[4]) {
+                    msg = `High Card ${this.rankMapReverse[cs2Sorted[0]]} with ${this.rankMapReverse[cs2Sorted[4]]} kicker beats High Card ${this.rankMapReverse[cs1Sorted[0]]} with ${this.rankMapReverse[cs1Sorted[4]]} kicker`;
+                } else {
+                    msg = `High Card ${this.rankMapReverse[cs1Sorted[0]]} ties High Card ${this.rankMapReverse[cs2Sorted[0]]}`;
+                }
+                break;
+        }
+
+        return msg;
+
+    }
+
     static arraysEqual(arr1, arr2) {
+        /*
+        Checks if two arrays are equal (have the same entries in the same order)
+
+        Inputs: 
+            arr1: array
+            arr2: array
+        Output:
+            equal: bool
+        */
+
         // First check if the arrays have the same length
         if (arr1.length !== arr2.length) {
           return false;

@@ -36,7 +36,7 @@ router.post('/signup', csrfSynchronisedProtection,
             });
         })
         .normalizeEmail(), 
-    expValidator.check('password', "Enter a password at least 5 characters long with only letters and numbers").isLength({min: 5}).isAlphanumeric(),
+    expValidator.check('password', "Enter a password at least 10 characters long with only letters and numbers").isLength({min: 10}).isAlphanumeric(),
     expValidator.body('confirmPassword').custom((value, { req }) => {
         if (value !== req.body.password) {
             throw new Error('Passwords must match!')

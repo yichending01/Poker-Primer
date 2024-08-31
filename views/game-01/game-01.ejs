@@ -24,7 +24,7 @@
                     <p>Your goal is to determine the winning hand in a poker showdown. You'll see the <a href="/articles/poker-lingo">hole cards</a> of two players and five <a href="/articles/poker-lingo">community cards</a>. Decide which player has the strongest hand (or if they tie!)</p>
 
                     <h3>Example</h3>
-                    <p>In the example below, the situation is Player 1's Ace King v.s. Player 2's pair of eights. Click on the winning player or tie
+                    <p>In the interactive example below, the situation is Player 1's Ace King v.s. Player 2's pair of eights. Click on the winning player or tie
                         if they are equally matched. A message at the bottom will display if you are correct.
                     </p>
 
@@ -116,17 +116,18 @@
                 <div class="player-cards-wrapper">
                     
                     <div class="player-cards" id="player-1-container">
-                        <h3>PLAYER 1</h3>
+                        <h3 id="player-1-label">PLAYER 1</h3>
                         <div id="player-1-cards"></div>
                     </div>
     
                     <button id="tie" class="btn">TIE</button>
     
                     <div class="player-cards" id="player-2-container">
-                        <h3>PLAYER 2</h3>
+                        <h3 id="player-2-label">PLAYER 2</h3>
                         <div id="player-2-cards"></div>
                     </div>
                 </div>
+                <div id="indicator" class="flashing"></div>
                 <div class="result-wrapper">
                     <p id="result"></p>
                     <button id="next" style="display: none;" class="btn">NEXT</button>

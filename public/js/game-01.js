@@ -6,6 +6,8 @@ const SURVIVAL = 1;
 const TWENTYHANDS = 2;
 const ZEN = 3;
 let score;
+let zenMessage;
+let sameHandType = false;
 
 
 window.onload = function() {
@@ -82,6 +84,13 @@ function gameRound(gameMode, deck) {
     let p2Cards = [];
     let p1Hand;
     let p2Hand;
+
+    sameHandType = false;
+    zenMessage = "";
+
+    document.getElementById("player-2-label").classList.remove("selected");
+    document.getElementById("tie").classList.remove("selected");
+    document.getElementById("player-1-label").classList.remove("selected");
 
     if (gameMode === BLITZ) {
         document.getElementById("score").innerText = "Score: " + score;
@@ -161,6 +170,8 @@ function gameRound(gameMode, deck) {
     }
     else {
         winner = PokerUtils.breakTie(p1Hand[0], p2Hand[0])[1];
+        sameHandType = true;
+        zenMessage = PokerUtils.breakTieMsg(p1Hand[1], p1Hand[0], p2Hand[0]);
     }
 
     document.getElementById("player-1-cards").onclick = () => { p1Win(gameMode, deck, winner, p1Hand, p2Hand) };
@@ -174,9 +185,15 @@ function gameRound(gameMode, deck) {
 
 
 function p1Win(gameMode, deck, winner, p1Hand, p2Hand) {
+    document.getElementById("player-1-label").classList.add("selected");
+    document.getElementById("player-2-label").classList.remove("selected");
+    document.getElementById("tie").classList.remove("selected");
     if (winner === 1) {
         if (gameMode != ZEN) {
             score++;
+            document.getElementById("indicator").innerText = "CORRECT!";
+            document.getElementById("indicator").style.color = "var(--main-yellow-color)";
+            flash();
             if (gameMode === 2 && score === 20) {
                 gameOverScreen(gameMode);
             }
@@ -186,13 +203,21 @@ function p1Win(gameMode, deck, winner, p1Hand, p2Hand) {
         }
         else {
             document.getElementById("result").style.display="block";
-            document.getElementById("result").innerText = "You're correct! " + PokerUtils.handTypes[p1Hand[1]] + " beats " + PokerUtils.handTypes[p2Hand[1]];
+            if (sameHandType) {
+                document.getElementById("result").innerText = "You're correct! " + zenMessage;
+            } else {
+                document.getElementById("result").innerText = "You're correct! " + PokerUtils.handTypes[p1Hand[1]] + " beats " + PokerUtils.handTypes[p2Hand[1]];
+            }
             document.getElementById("next").style.display = "inline-block";
         }
     }
     else {
         if (gameMode === BLITZ) {
             duration = duration - 10;
+            document.getElementById("indicator").innerText = "INCORRECT! -10s";
+            document.getElementById("indicator").style.color = "var(--card-red-color)";
+            flash();
+            flashTimer();
             gameRound(gameMode, deck);
         }
         else if (gameMode === SURVIVAL) {
@@ -200,11 +225,15 @@ function p1Win(gameMode, deck, winner, p1Hand, p2Hand) {
         }
         else if (gameMode === TWENTYHANDS) {
             duration = duration + 10;
+            document.getElementById("indicator").innerText = "INCORRECT! +10s";
+            document.getElementById("indicator").style.color = "var(--card-red-color)";
+            flash();
+            flashTimer();
             gameRound(gameMode, deck);
         }
         else if (gameMode === ZEN) {
             document.getElementById("result").style.display="block";
-            document.getElementById("result").innerText = "You're incorrect!";
+            document.getElementById("result").innerText = "You're incorrect! Try again!";
         }
     }
 }
@@ -212,9 +241,15 @@ function p1Win(gameMode, deck, winner, p1Hand, p2Hand) {
 
 
 function p2Win(gameMode, deck, winner, p1Hand, p2Hand) {
+    document.getElementById("player-2-label").classList.add("selected");
+    document.getElementById("tie").classList.remove("selected");
+    document.getElementById("player-1-label").classList.remove("selected");
     if (winner === 2) {
         if (gameMode != ZEN) {
             score++;
+            document.getElementById("indicator").innerText = "CORRECT!";
+            document.getElementById("indicator").style.color = "var(--main-yellow-color)";
+            flash();
             if (gameMode === 2 && score === 20) {
                 gameOverScreen(gameMode);
             }
@@ -225,12 +260,20 @@ function p2Win(gameMode, deck, winner, p1Hand, p2Hand) {
         else {
             document.getElementById("result").style.display="block";
             document.getElementById("next").style.display = "inline-block";
-            document.getElementById("result").innerText = "You're correct! " + PokerUtils.handTypes[p2Hand[1]] + " beats " + PokerUtils.handTypes[p1Hand[1]];
+            if (sameHandType) {
+                document.getElementById("result").innerText = "You're correct! " + zenMessage;
+            } else {
+                document.getElementById("result").innerText = "You're correct! " + PokerUtils.handTypes[p2Hand[1]] + " beats " + PokerUtils.handTypes[p1Hand[1]];
+            }        
         }
     }
     else {
         if (gameMode === BLITZ) {
             duration = duration - 10;
+            document.getElementById("indicator").innerText = "INCORRECT! -10s";
+            document.getElementById("indicator").style.color = "var(--card-red-color)";
+            flash();
+            flashTimer();
             gameRound(gameMode, deck);
         }
         else if (gameMode === SURVIVAL) {
@@ -238,11 +281,15 @@ function p2Win(gameMode, deck, winner, p1Hand, p2Hand) {
         }
         else if (gameMode === TWENTYHANDS) {
             duration = duration + 10;
+            document.getElementById("indicator").innerText = "INCORRECT! +10s";
+            document.getElementById("indicator").style.color = "var(--card-red-color)";
+            flash();
+            flashTimer();
             gameRound(gameMode, deck);
         }
         else if (gameMode === ZEN) {
             document.getElementById("result").style.display="block";
-            document.getElementById("result").innerText = "You're incorrect!"; 
+            document.getElementById("result").innerText = "You're incorrect! Try again!"; 
         }
     }
 }
@@ -250,9 +297,15 @@ function p2Win(gameMode, deck, winner, p1Hand, p2Hand) {
 
 
 function tiebtn(gameMode, deck, winner) {
+    document.getElementById("player-2-label").classList.remove("selected");
+    document.getElementById("tie").classList.add("selected");
+    document.getElementById("player-1-label").classList.remove("selected");
     if (winner === 0) {
         if (gameMode != ZEN) {
             score++;
+            document.getElementById("indicator").innerText = "CORRECT!";
+            document.getElementById("indicator").style.color = "var(--main-yellow-color)";
+            flash();
             if (gameMode === 2 && score === 20) {
                 gameOverScreen(gameMode);
             }
@@ -263,24 +316,36 @@ function tiebtn(gameMode, deck, winner) {
         else {
             document.getElementById("result").style.display="block";
             document.getElementById("next").style.display = "inline-block";
-            document.getElementById("result").innerText = "You're correct!";
+            if (sameHandType) {
+                document.getElementById("result").innerText = "You're correct! " + zenMessage;
+            } else {
+                document.getElementById("result").innerText = "You're correct! " + PokerUtils.handTypes[p1Hand[1]] + " ties " + PokerUtils.handTypes[p2Hand[1]];
+            }
         }
     }
     else {
         if (gameMode === BLITZ) {
             duration = duration - 10;
+            document.getElementById("indicator").innerText = "INCORRECT! -10s";
+            document.getElementById("indicator").style.color = "var(--card-red-color)";
+            flash();
+            flashTimer();
             gameRound(gameMode, deck);
         }
         else if (gameMode === SURVIVAL) {
             gameOverScreen(gameMode);
         } 
         else if (gameMode === TWENTYHANDS) {
+            document.getElementById("indicator").innerText = "INCORRECT! +10s";
+            document.getElementById("indicator").style.color = "var(--card-red-color)";
+            flash();
+            flashTimer();
             duration = duration + 10;
             gameRound(gameMode, deck);
         }
         else if (gameMode === ZEN) {
             document.getElementById("result").style.display="block";
-            document.getElementById("result").innerText = "You're incorrect";
+            document.getElementById("result").innerText = "You're incorrect! Try again!";
         }
     }
 }
@@ -478,9 +543,7 @@ function startStopwatch() {
 
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        twentyHandsTime = [minutes + ":" + seconds, duration];
-
-        document.getElementById("timer").textContent = twentyHandsTime[0];
+        document.getElementById("timer").textContent = minutes + ":" + seconds;
 
         duration++;
 
@@ -505,4 +568,35 @@ function exit(gameMode) {
 
 function gameModeBack() {
     window.location.href = "/";
+}
+
+
+function flash() {
+    indicator = document.getElementById("indicator");
+    // indicator.classList.remove("flashing");
+    // void indicator.offsetWidth;
+    // indicator.classList.add("flashing");
+
+    indicator.style.display = "block";
+
+    setTimeout(() => {
+        indicator.style.display = "none";
+      }, 500);
+    return;
+}
+
+function flashTimer() {
+    const element = document.getElementById('timer');
+
+    // Remove the class if it exists to restart the animation
+
+    // Force reflow to restart the animation
+    void element.offsetWidth;
+
+    // Add the class to trigger the flash
+    element.classList.add('flash');
+
+    setTimeout(() => {
+        element.classList.remove('flash');
+    }, 600);
 }
