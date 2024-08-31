@@ -67,7 +67,7 @@ h2 {
 
 #instructions {
     font-size: 1.5rem;
-    align-self: start;
+    align-self: center;
 }
 
 #instructions p {
@@ -173,6 +173,96 @@ input[type="text"] {
     }
     50% {
       opacity: 0; /* Hidden */
+    }
+}
+
+
+
+@media (max-width: 900px) {
+
+    .top-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        padding: 1.5rem 0;
+        margin: 0 5%;
+        gap: 0.5rem;
+    }
+    
+    #back {
+        font-size: 1.5rem;
+        justify-self: start;
+        height: 2.5rem;
+    }
+
+    .top-text {
+        font-size: 1.5rem;
+    }
+
+
+    #show-area-grid {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    #upper-show-area-grid {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #instructions {
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 5%;
+    }
+
+    #clear {
+        font-size: 1.5rem;
+        height: 2.5rem;
+        width: fit-content;
+    }
+
+    #card-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(5, 15%);
+        grid-template-rows: repeat(2, min-content);
+        margin: 0;
+        padding: 0;
+        height: fit-content;
+        /* justify-content: center;
+        align-items: center; */
+    }
+
+    #input-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    
+    #input-wrapper h3 {
+        font-size: 1.5rem;
+        margin: 0 0 1rem 0;
+    }
+    
+    input[type="text"] {
+        font: inherit;
+        width: 100%; /* Sets the width of the input box */
+        padding: 10px; /* Adds padding inside the input box */
+        font-size: 1.5rem; /* Changes the font size */
+        border: 4px solid var(--main-blue-color); /* Defines the border thickness and color */
+        border-radius: 5px; /* Rounds the corners of the input box */
+        outline: none; /* Removes the default outline on focus */
+        color: var(--main-blue-color);
     }
 }
 

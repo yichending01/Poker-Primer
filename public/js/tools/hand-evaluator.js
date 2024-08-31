@@ -20,6 +20,7 @@ window.onload = function () {
         const inputValue = pokerInput.value;
         pokerHandFromInput(inputValue);
     });
+
 }
 
 function createButtonGrid() {
@@ -309,4 +310,27 @@ function updateBtnGridWidth() {
 
   // Run the function on load and whenever the window resizes (optional)
   window.addEventListener('load', updateBtnGridWidth);
-  //window.addEventListener('resize', updateBtnGridWidth);
+
+
+function updateMobileView() {
+    var screenWidth = window.innerWidth;
+
+    if (screenWidth < 900) {
+        useKeyboard();
+        document.getElementById("use-keyboard").style.display="none";
+        document.getElementById("use-buttons").style.display="none";
+        inputWrapper.style.width = '90%';
+        document.getElementById("instructions-text").innerText = "Type 5-10 cards to begin."
+    } else {
+        document.getElementById("instructions-text").innerText = "Select or type 5-10 cards. The best hand will be highlighted and shown at the top."
+        if (document.getElementById("input-wrapper").style.display === "none") {
+            document.getElementById("use-keyboard").style.display="block";
+        } else {
+            document.getElementById("use-buttons").style.display="block";
+        }
+    }
+}
+
+
+  window.addEventListener('resize', updateMobileView);
+  window.addEventListener('load', updateMobileView);
