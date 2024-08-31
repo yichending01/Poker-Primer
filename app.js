@@ -10,7 +10,6 @@ const { csrfSync } = require('csrf-sync');
 const flash = require('connect-flash');
 const helmet = require('helmet');
 const compression = require('compression');
-// const morgan = require('morgan');
 
 const errorController = require('./controllers/error');
 const User = require('./models/user');
@@ -59,7 +58,6 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'),
 
 app.use(helmet());
 app.use(compression());
-// app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
