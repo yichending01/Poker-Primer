@@ -368,6 +368,8 @@ function blitzStartScreen() {
     document.getElementById("start-screen-body").style.color = "var(--main-yellow-color)";
     document.getElementById("game-mode-name").innerText = "Blitz";
     document.getElementById("game-mode-description").innerText = "A two minute race against the clock";
+    document.getElementById("game-mode-instructions").innerHTML = 
+    "Choose as many winning hands as you can in two minutes. But <b>don't spam!</b> Every wrong answer carries a <i>-10 second penalty</i>. Get ready to race against the clock!"
 
     document.getElementById("game-01-start").onclick = () => { startGame(BLITZ) };
     document.getElementById("exit").onclick = () => { exit(BLITZ); };
@@ -382,6 +384,8 @@ function survivalStartScreen() {
     document.getElementById("start-screen-body").style.color = "var(--main-red-color)";
     document.getElementById("game-mode-name").innerText = "Survival";
     document.getElementById("game-mode-description").innerText = "Keep going as long as you're right.";
+    document.getElementById("game-mode-instructions").innerHTML =
+    "Choose as many winning hands as possible in a row. See how long you can keep your streak!"
 
     document.getElementById("game-01-start").onclick = () => { startGame(SURVIVAL) };
     document.getElementById("exit").onclick = () => { exit(SURVIVAL); };
@@ -395,6 +399,8 @@ function twentyHandsStartScreen() {
     document.getElementById("start-screen-body").style.color = "var(--main-blue-color)";
     document.getElementById("game-mode-name").innerText = "20 Hands";
     document.getElementById("game-mode-description").innerText = "Evaluate 20 hands as fast as possible.";
+    document.getElementById("game-mode-instructions").innerHTML =
+    "Find 20 winning hands as fast as possible. But <b>don't spam!</b> Every wrong answer carries a <i>+10 second penalty</i>. Get ready to race against the clock!"
 
     document.getElementById("game-01-start").onclick = () => { startGame(TWENTYHANDS) };
     document.getElementById("exit").onclick = () => { exit(TWENTYHANDS); };
@@ -408,6 +414,8 @@ function zenStartScreen() {
     document.getElementById("start-screen-body").style.color = "var(--main-green-color)";
     document.getElementById("game-mode-name").innerText = "Zen";
     document.getElementById("game-mode-description").innerText = "A relaxing, never-ending mode with explanations.";
+    document.getElementById("game-mode-instructions").innerHTML =
+    "Practice hand rankings without any pressure. Keep trying until you get it right. Explanations included.";
 
     document.getElementById("game-01-start").onclick = () => { startGame(ZEN) };
     document.getElementById("exit").onclick = () => { exit(ZEN); };
