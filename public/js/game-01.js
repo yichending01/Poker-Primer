@@ -29,6 +29,9 @@ function startGame(gameMode) {
     // reveal game area
     document.getElementById("game-area").style.display = "block";
 
+    // change background color
+    document.body.style.backgroundColor = "var(--off-green-color)";
+
     // build deck
     let deck = PokerUtils.buildDeck();
 
@@ -282,6 +285,9 @@ function pickGameModeScreen() {
     document.getElementById("timer").style.display="none";
     document.getElementById("start-screen").style.display="none";
 
+    //change background color
+    document.body.style.backgroundColor = "var(--main-medium-grey-color)";
+
     // display menu
     document.getElementById("game-modes").style.display="block";
 
@@ -338,6 +344,8 @@ function gameOverScreen(gameMode) {
 
     document.getElementById("game-over-screen").style.display = "block";
     document.getElementById("game-area").style.display = "none";
+
+    document.body.style.backgroundColor = "var(--main-medium-grey-color)";
 
     document.getElementById("play-again").onclick = () => { startGame(gameMode); };
     document.getElementById("game-over-back").onclick = pickGameModeScreen;

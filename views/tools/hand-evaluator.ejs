@@ -17,12 +17,18 @@
                 <div id="upper-show-area-grid">
                     <div id="card-grid"></div>
                     <div id="instructions">
-                        <p>Select 5-10 cards. The best hand will be highlighted and shown at the top. </p>
+                        <p>Select or type 5-10 cards. The best hand will be highlighted and shown at the top. </p>
                         <p class="flashing" id="max-msg" style="display: none;">There is a max of 10 cards. Press the button below to clear all cards.</p>
                         <button class="btn" id="clear">Clear Cards</button>
+                        <button id="use-keyboard" class="btn" style="display: block;">Use Keyboard</button>              
+                        <button id="use-buttons" class="btn" style="display: none;">Use Buttons</button>
                     </div>
                 </div>
                 <div id="button-grid"></div>
+                <div id="input-wrapper" style="display: none;">
+                    <h3>Type your cards below:</h3>
+                    <input type="text" id="poker-hand-input" placeholder="Ex: 10D, 9S, JC, AH, 10H" />
+                </div>
             </div>
         </main>
         <script src="/js/shared.js"></script>

@@ -173,6 +173,15 @@ class PokerUtils {
         let cs1Sorted = this.tieSort(cs1);
         let cs2Sorted = this.tieSort(cs2);
 
+        // check for straight bug
+        if (this.arraysEqual(cs1Sorted, [14, 5, 4, 3, 2]) && this.arraysEqual(cs1Sorted, [14, 5, 4, 3, 2])) {
+            return [hand1, 0];
+        } else if (this.arraysEqual(cs1Sorted, [14, 5, 4, 3, 2])) {
+            return [hand2, 2];
+        } else if (this.arraysEqual(cs2Sorted, [14, 5, 4, 3, 2])) {
+            return [hand1, 1];
+        }
+
         for (let i=0; i < 5; i++) {
             if (cs1Sorted[i] > cs2Sorted[i]) {
                 return [hand1, 1];
@@ -212,4 +221,25 @@ class PokerUtils {
             }
         });
     }
+
+    static arraysEqual(arr1, arr2) {
+        // First check if the arrays have the same length
+        if (arr1.length !== arr2.length) {
+          return false;
+        }
+      
+        // Then check if every element in the arrays is equal
+        for (let i = 0; i < arr1.length; i++) {
+          if (arr1[i] !== arr2[i]) {
+            return false;
+          }
+        }
+      
+        // If all checks pass, the arrays are equal
+        return true;
+      }
 }
+
+
+
+  

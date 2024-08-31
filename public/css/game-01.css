@@ -21,6 +21,10 @@ body {
     /* overflow: hidden; */
 }
 
+main {
+    height: 100%;
+}
+
 #game-mode-top-bar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
