@@ -1,0 +1,239 @@
+<%- include('../includes/head.ejs') %>
+        <link rel="stylesheet" href="/css/articles/hand-rankings.css">
+        <%- include('../includes/nav.ejs') %>
+
+    </head>
+
+    <body>
+        <main>
+            <h1>Poker Hand Rankings: A Beginner's Guide</h1>
+            
+            <!-- Table of Contents -->
+            <div class="table-of-contents-container">
+                <h2>Table of Contents</h2>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#poker-hand-rankings">Poker Hand Rankings</a></li>
+                    <li><a href="#what-is-a-kicker">What is a Kicker?</a></li>
+                    <li><a href="#breaking-ties">Breaking Ties in Poker Hands</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+            </div>
+
+            <h2 id="introduction">Introduction</h2>
+            <p>Poker is one of the most popular card games in the world, and understanding the basic rules and hand rankings is essential to playing effectively. Whether you're playing a friendly game at home or participating in a tournament, knowing how to rank your hand compared to others is key. In this guide, we'll cover the poker hand rankings from highest to lowest and explain how ties are broken.</p>
+            
+            <h2 id="poker-hand-rankings">Poker Hand Rankings</h2>
+            <p>In poker, each hand consists of five cards and hands are ranked based on their rarity, with the rarer hands being stronger. Here's a rundown of the standard poker hand rankings from strongest to weakest.</p>
+
+            <ul>
+                <li>
+                    <h3><strong>Royal Flush</strong></h3>
+                    <p>A Royal Flush is the highest-ranking hand in poker. It consists of five consecutive cards of the same suit, starting from 10 up to Ace (10, J, Q, K, A).</p>
+
+                    <p class="hand-example">Example: 10♠, J♠, Q♠, K♠, A♠</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/10-S.png">
+                        <img src="/assets/cards/J-S.png">
+                        <img src="/assets/cards/Q-S.png">
+                        <img src="/assets/cards/K-S.png">
+                        <img src="/assets/cards/A-S.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>Straight Flush</strong></h3>
+                    <p>A Straight Flush is five consecutive cards of the same suit, but not a Royal Flush.</p>
+                    <p class="hand-example">Example: 6♣, 7♣, 8♣, 9♣, 10♣</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/6-C.png">
+                        <img src="/assets/cards/7-C.png">
+                        <img src="/assets/cards/8-C.png">
+                        <img src="/assets/cards/9-C.png">
+                        <img src="/assets/cards/10-C.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>Four of a Kind</strong></h3>
+                    <p>Four of a Kind means you have four cards of the same rank, plus any other card.</p> 
+                    <p class="hand-example">Example: 9♦, 9♠, 9♥, 9♣, 2♦</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/9-D.png">
+                        <img src="/assets/cards/9-S.png">
+                        <img src="/assets/cards/9-H.png">
+                        <img src="/assets/cards/9-C.png">
+                        <img src="/assets/cards/2-D.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>Full House</strong></h3>
+                    <p>A Full House consists of three cards of one rank and two cards of another rank.</p>
+                    <p class="hand-example">Example: K♠, K♣, K♦, 5♥, 5♠</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/K-S.png">
+                        <img src="/assets/cards/K-C.png">
+                        <img src="/assets/cards/K-D.png">
+                        <img src="/assets/cards/5-H.png">
+                        <img src="/assets/cards/5-S.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>Flush</strong></h3>
+                    <p>A Flush is any five cards of the same suit, not in sequence.</p>
+                    <p class="hand-example">Example: A♥, 10♥, 7♥, 4♥, 2♥</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/A-H.png">
+                        <img src="/assets/cards/10-H.png">
+                        <img src="/assets/cards/7-H.png">
+                        <img src="/assets/cards/4-H.png">
+                        <img src="/assets/cards/2-H.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>Straight</strong></h3>
+                    <p>A Straight is five consecutive cards of different suits.</p>
+                    <p class="hand-example">Example: 5♣, 6♦, 7♠, 8♥, 9♠</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/5-C.png">
+                        <img src="/assets/cards/6-D.png">
+                        <img src="/assets/cards/7-S.png">
+                        <img src="/assets/cards/8-H.png">
+                        <img src="/assets/cards/9-S.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>Three of a Kind</strong></h3>
+                    <p>Three of a Kind means having three cards of the same rank and two unrelated cards.</p>
+                    <p class="hand-example">Example: 8♠, 8♣, 8♦, J♥, 4♠</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/8-S.png">
+                        <img src="/assets/cards/8-C.png">
+                        <img src="/assets/cards/8-D.png">
+                        <img src="/assets/cards/J-H.png">
+                        <img src="/assets/cards/4-S.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>Two Pair</strong></h3>
+                    <p>Two Pair consists of two cards of one rank, two cards of another rank, and one unrelated card.</p>
+                    <p class="hand-example">Example: Q♠, Q♦, 3♣, 3♠, 7♦</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/Q-S.png">
+                        <img src="/assets/cards/Q-D.png">
+                        <img src="/assets/cards/3-C.png">
+                        <img src="/assets/cards/3-S.png">
+                        <img src="/assets/cards/7-D.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>Pair</strong></h3>
+                    <p>Pair means having two cards of the same rank and three unrelated cards.</p>
+                    <p class="hand-example">Example: 5♠, 5♦, K♣, 9♠, 2♥</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/5-S.png">
+                        <img src="/assets/cards/5-D.png">
+                        <img src="/assets/cards/K-C.png">
+                        <img src="/assets/cards/9-S.png">
+                        <img src="/assets/cards/2-H.png">
+                    </div>
+                </li>
+                <li>
+                    <h3><strong>High Card</strong></h3>
+                    <p>When no player has any of the hands above, the player with the highest card wins.</p>
+                    <p class="hand-example">Example: A♣, 10♦, 7♠, 4♠, 2♣</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/A-C.png">
+                        <img src="/assets/cards/10-D.png">
+                        <img src="/assets/cards/7-S.png">
+                        <img src="/assets/cards/4-S.png">
+                        <img src="/assets/cards/2-C.png">
+                    </div>
+                </li>
+            </ul>
+        
+            <h2 id="what-is-a-kicker">What is a Kicker?</h2>
+            <p>A <strong>kicker</strong> is a card that is not directly involved in forming a poker hand but can be used to determine the winner when two players have hands of the same rank. For example, in a situation where two players both have a pair, the highest unrelated card (the kicker) can decide who wins the hand. Kickers are most commonly used in hands like Pair, Two Pair, and Three of a Kind, as well as in High Card situations.</p>
+            <p>For example, consider the following two hands:</p>
+            <ul>
+                <li>
+                    <p class="hand-example">Player 1: 5♠, 5♦, K♣, 9♠, 4♣ (Pair of Fives, King kicker)</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/5-S.png">
+                        <img src="/assets/cards/5-D.png">
+                        <img src="/assets/cards/K-C.png">
+                        <img src="/assets/cards/9-S.png">
+                        <img src="/assets/cards/4-C.png">
+                    </div>
+                </li>
+                <li>
+                    <p class="hand-example">Player 2: 5♣, 5♦, Q♠, 9♠, 4♣ (Pair of Fives, Queen kicker)</p>
+                    <div class="hand-container">
+                        <img src="/assets/cards/5-C.png">
+                        <img src="/assets/cards/5-D.png">
+                        <img src="/assets/cards/Q-S.png">
+                        <img src="/assets/cards/9-S.png">
+                        <img src="/assets/cards/4-C.png">
+                    </div>
+                </li>
+            </ul>
+            <p>Both players have a Pair of Fives. However, Player 1 has a King as their highest unrelated card (the kicker), while Player 2 has a Queen. Since the King is higher than the Queen, Player 1 wins the hand.</p>
+        
+            <h2 id="breaking-ties">Breaking Ties in Poker Hands</h2>
+            <p>In poker, ties are relatively common, and there are specific rules for breaking ties depending on the type of hand. Here’s how ties are typically resolved:</p>
+            <ul>
+                <li>
+                    <h3><strong>Royal Flush</strong></h3>
+                    <p>Since all Royal Flushes are the same, there is no tiebreaker. A tie occurs only if two players have a Royal Flush, and the pot is split.</p>
+                </li>
+                <li>
+                    <h3><strong>Straight Flush</strong></h3>
+                    <p>The player with the highest top card in the Straight Flush wins. For example, a Straight Flush with a high card of 9 (5-6-7-8-9) loses to a Straight Flush with a high card of 10 (6-7-8-9-10). If two players have equal Straight Flushes, the pot is split.</p>
+                    <p>Note: an Ace low straight flush (A-2-3-4-5) loses to any higher straight flush &mdash; for example (2-3-4-5-6). The fact that there is an Ace does not matter if the Ace is in the lowest position.</p>
+                </li>
+                <li>
+                    <h3><strong>Four of a Kind</strong></h3>
+                    <p>The player with the higher set of four cards wins. If both players have the same Four of a Kind, the kicker (the fifth card) decides the winner. If the kickers are also equal, the pot is split.</p>
+                </li>
+                <li>
+                    <h3><strong>Full House</strong></h3>
+                    The player with the higher three of a kind wins. If the three of a kind is the same, the pair is used to break the tie. If two players have the same Full House, the pot is split.
+                </li>
+                <li>
+                    <h3><strong>Flush</strong></h3>
+                    The player with the highest card in the Flush wins. If the highest cards are the same, the next highest card is compared, and so on, until the tie is broken. If two players have the same Flush, the pot is split.
+                </li>
+                <li>
+                    <h3><strong>Straight</strong></h3>
+                    <p>The player with the highest card in the Straight wins. For example, a Straight with a high card of Queen (8-9-10-J-Q) beats a Straight with a high card of Jack (7-8-9-10-J). If two players have the same Straight, the pot is split.</p>
+                    <p>Note: an Ace low straight (A-2-3-4-5) loses to any higher straight &mdash; for example (2-3-4-5-6). The fact that there is an Ace does not matter if the Ace is in the lowest position.</p>
+                </li>
+                <li>
+                    <h3><strong>Three of a Kind</strong><br></h3>
+                    The player with the higher set of three cards wins. If both players have the same three of a kind, the highest kicker (one of the other two cards) decides the winner. If both kickers are the same, the pot is split.
+                </li>
+                <li>
+                    <h3><strong>Two Pair</strong></h3>
+                    The player with the higher pair wins. If the highest pairs are the same, the second pair is compared. If both pairs are identical, the kicker decides the winner. If the kicker is identical, the pot is split.
+                </li>
+                <li>
+                    <h3><strong>Pair</strong></h3>
+                    The player with the higher pair wins. If both players have the same pair, the highest kicker is used to break the tie, followed by the second highest and then the third highest, if necessary. If all kickers match, the pot is split.
+                </li>
+                <li>
+                    <h3><strong>High Card</strong></h3>
+                    If no player has a pair or better, the player with the highest card wins. If the highest cards are tied, the next highest card is compared, and so on, until the tie is broken. If two players have the same High Card hand, the pot is split.
+                </li>
+            </ul>
+        
+            <h2 id="conclusion">Conclusion</h2>
+            <p>Understanding poker hand rankings, how ties are broken, and the role of a kicker is crucial for anyone looking to play poker effectively. By familiarizing yourself with these rules, you can make better decisions during the game and increase your chances of winning. 
+                </p>
+            <p>
+                Ready to practice? Try out the <a href="/game-01">Showdown Drill</a> or check out the <a href="/hand-evaluator">Hand Evaluator Tool</a>.
+            </p>
+        
+            <p>Happy playing!</p>
+        </main>
+    </body>
+    </html>
+
+    

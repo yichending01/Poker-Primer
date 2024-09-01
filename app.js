@@ -52,7 +52,8 @@ const indexRoutes = require('./routes/index');
 const game01Routes = require('./routes/game-01');
 const authRoutes = require('./routes/auth');
 const dashboardRoutes = require('./routes/dashboard');
-const handEvaluatorRoutes = require('./routes/hand-evaluator')
+const handEvaluatorRoutes = require('./routes/hand-evaluator');
+const articleRoutes = require('./routes/articles');
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 
@@ -79,6 +80,7 @@ app.use(game01Routes);
 app.use(authRoutes);
 app.use(dashboardRoutes);
 app.use(handEvaluatorRoutes);
+app.use(articleRoutes);
 
 app.get('/500', errorController.get500);
 
