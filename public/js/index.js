@@ -6,5 +6,6 @@ window.onload = function() {
 
     document.getElementById("game-01").addEventListener("click", () => { goToDrill('/game-01') });
     document.getElementById("hand-evaluator").addEventListener("click", () => { goToDrill('/hand-evaluator') });
+    document.getElementById("hand-rankings").addEventListener("click", () => { goToDrill('/articles/hand-rankings') });
 
 }

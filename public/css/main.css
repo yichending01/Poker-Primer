@@ -178,6 +178,12 @@ main {
   margin: 0;
 }
 
+.articles {
+  background-color: var(--main-blue-color);
+  width: 100%;
+  padding: 3rem 15%;
+}
+
 #drills-title  {
   font-size: 2rem;
   color: white;
@@ -192,8 +198,14 @@ main {
   padding: 0 0 1rem 0;
 }
 
+#articles-title {
+  font-size: 2rem;
+  color: black;
+  margin: 0;
+  padding: 0 0 1rem 0;
+}
 
-.drills-grid, .tools-grid {
+.drills-grid, .tools-grid, .articles-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
@@ -201,7 +213,7 @@ main {
 }
 
 
-.drill-item, .tool-item {
+.drill-item, .tool-item, .articles-item {
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -212,7 +224,7 @@ main {
   cursor: pointer;
 }
 
-.drill-item img, .tool-item img {
+.drill-item img, .tool-item img, .articles-item img {
   top: 0;
   left: 0;
   width: 100%;
@@ -222,7 +234,7 @@ main {
 }
 
 
-.drill-item:hover img, .tool-item:hover img {
+.drill-item:hover img, .tool-item:hover img, .articles-item:hover img {
   transform: scale(1.1);
 }
 
@@ -360,14 +372,14 @@ main {
     padding: 3rem 5%;
   }
   
-  .tools {
+  .tools, .articles {
     background-color: var(--main-blue-color);
     width: 100%;
     padding: 3rem 5%;
     margin: 0;
   }
 
-  .drills-grid, .tools-grid {
+  .drills-grid, .tools-grid, .articles-grid {
     display: grid;
     grid-template-columns: 1fr;
     height: 100%;
