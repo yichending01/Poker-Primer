@@ -7,11 +7,84 @@
     <body>
         <%- include('../includes/nav.ejs') %>
         <main>
+            <div id="whats-your-hand-backdrop"></div>
             <div id="game-modes">
                 <div id="game-mode-top-bar">
                     <button id="game-mode-back" class="btn">Back</button>
                     <h1 class="game-title">WHAT'S YOUR HAND?</h1>
-                    <button id="how-to-play" class="btn">HOW TO PLAY</button>
+                    <button id="how-to-play" class="btn flash-how-to-play">HOW TO PLAY</button>
+                </div>
+                <div id="how-to-play-popup">
+                    <h2>How to Play: What's Your Hand?</h2>
+                    <p>Welcome to <b>What's Your Hand?</b> &mdash; a game designed to help you master identifying poker hands!</p>
+
+                    <p>(Need a refresher on hand rankings? Check out <a href="/articles/hand-rankings" target="_blank">Poker Hand Rankings: A Beginner's Guide</a> for more details.)</p>
+                    
+                    <h3>Objective</h3>
+                    <p>
+                        Your goal is to find the best possible hand at each stage: the flop, turn, and river.
+                        You'll start with two hole cards and see three flop cards. Choose the best hand you can make using the buttons provided. If 
+                        you're right, a turn card will be revealed. Select your new best hand, and if you're correct again, the river card comes out. 
+                        Pick the best final hand and keep going to a new round with new hole cards and a new flop. See how many rounds you can ace in 
+                        a row! 
+                    </p>
+                    <p>
+                        (Need a refresher on poker lingo? Check out <a href="/articles/poker-lingo" target="_blank">A Long List of Poker Lingo</a>.
+                        New to poker entirely? Check out <a href="/articles/how-to-play-poker" target="_blank">How to Play Poker</a>).
+                    </p>
+
+                    <h3>Example</h3>
+                    <p>In the interactive example below, you can play through one round of the game. To start, your hole cards are the J♦, 5♦. 
+                        The flop is 5♠, 5♥, 8♣. Select your best hand!
+                    </p>
+
+                    <div class="board-wrapper-howto">
+                        <h3>BOARD</h3>
+                        <h4 id="street-howto">FLOP</h4>
+                        <div id="board-cards-howto">
+                            <img src="/assets/cards/5-S.png">
+                            <img src="/assets/cards/5-H.png">
+                            <img src="/assets/cards/8-C.png">
+                        </div>
+                    </div>
+                    <div class="your-cards-wrapper-howto">
+                        
+                        <div class="your-cards-howto" id="your-cards-container-howto">
+                            <h3>YOUR CARDS</h3>
+                            <div id="your-cards-howto">
+                                <img src="/assets/cards/J-D.png">
+                                <img src="/assets/cards/5-D.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="hand-grid-howto">
+                        <div class="hand-btn-howto" id="high-card-howto">High Card</div>
+                        <div class="hand-btn-howto" id="pair-howto">Pair</div>
+                        <div class="hand-btn-howto" id="two-pair-howto">Two-Pair</div>
+                        <div class="hand-btn-howto" id="three-of-a-kind-howto">Three of a Kind</div>
+                        <div class="hand-btn-howto" id="straight-howto">Straight</div>
+                        <div class="hand-btn-howto" id="flush-howto">Flush</div>
+                        <div class="hand-btn-howto" id="full-house-howto">Full House</div>
+                        <div class="hand-btn-howto" id="four-of-a-kind-howto">Four of a Kind</div>
+                        <div class="hand-btn-howto" id="straight-flush-howto">Straight Flush</div>
+                        <div class="hand-btn-howto" id="royal-flush-howto">Royal Flush</div>
+                    </div>
+
+                    <div id="howto-feedback-wrapper">
+                        <p id="howto-ex-feedback"></p>
+                        <button id="howto-next" class="btn">Next</button>
+                    </div>
+
+                    <h3>Game Modes</h3>
+                    <p>Ready to play? Choose a game mode and get started. Race against the clock with <i><b>Blitz</b></i>, see how long you can keep a 
+                        streak going with <i><b>Survival</b></i>, or have a relaxing practice session with <i><b>Zen</b></i>.
+                    </p>
+
+                    <h3>Play</h3>
+                    <p>Start playing and see if you can pick the right hand every time!</p>
+
+                    <button class="btn" id="how-to-play-close">Close</button>
                 </div>
                 <h1 id="choose-text">Choose a Game Mode</h1>
                 <div class="game-mode-grid">
@@ -22,7 +95,7 @@
                         <img src="assets/badges/survival_badge.png">
                     </div>
                     <div id="zen" class="game-mode-item">
-                        <img src="assets/badges/zen_badge.png">
+                        <img src="assets/badges/WYH_zen_badge.png">
                     </div>
                 </div>
             </div>
@@ -96,5 +169,6 @@
                 </div>
             </div>
         </main>
+        <script src="/js/shared.js"></script>
     </body>
 </html>

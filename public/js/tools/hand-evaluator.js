@@ -281,18 +281,21 @@ function useButtons() {
 function setInputVal() {
     let inputElement = document.getElementById('poker-hand-input');
     let valString = "";
-    for (let i=0; i< cardList.length-1; i++) {
-        let card = cardList[i];
+
+    if (cardList.length > 0) {
+        for (let i=0; i< cardList.length-1; i++) {
+            let card = cardList[i];
+            let r;
+            let s;
+            [r,s] = card.name.split("-");
+            valString += r + s + ", ";
+        }
+        let card = cardList[cardList.length-1];
         let r;
         let s;
         [r,s] = card.name.split("-");
-        valString += r + s + ", ";
+        valString += r + s;
     }
-    let card = cardList[cardList.length-1];
-    let r;
-    let s;
-    [r,s] = card.name.split("-");
-    valString += r + s;
 
     inputElement.value = valString;
 }

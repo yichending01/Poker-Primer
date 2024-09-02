@@ -60,6 +60,23 @@ main {
     padding: 0.5rem;
 }
 
+/* HTP Flash animation */
+@keyframes flash-how-to-play {
+    0%, 100% {
+      background-color: var(--main-red-color); /* Original background color */
+      color: white;
+    }
+    50% {
+      background-color: white; /* Flash */
+      color: var(--main-red-color);
+    }
+}
+  
+/* Class to trigger the animation */
+.flash-how-to-play {
+    animation: flash-how-to-play 1s ease-in-out 0.1s 3;
+}
+
 .game-title {
     color: var(--main-green-color);
     padding: 0;
@@ -105,11 +122,15 @@ main {
 }
 
 #how-to-play-popup a {
-    /* text-decoration: none; */
+    text-decoration: none;
     font-size: 1.2rem;
     line-height: 1.5;
     margin: 0;
     color: var(--main-yellow-color);
+}
+
+#how-to-play-popup a:hover {
+    text-decoration: underline;
 }
 
 .board-wrapper-howto {
@@ -308,7 +329,7 @@ transform: scale(1.1);
     padding: 0.5rem 0.5rem;
 }
 
-/* Flash animation */
+/* Flash animation timer */
 @keyframes flash-border {
     0%, 100% {
       border-color: var(--main-yellow-color); /* Original border color */

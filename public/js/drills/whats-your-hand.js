@@ -20,6 +20,8 @@ let minutes;
 let seconds;
 let gameOver = false;
 
+let howToStreet = FLOP;
+
 window.onload = function() {
 
     // add hand button event listeners
@@ -41,6 +43,23 @@ window.onload = function() {
     document.getElementById("game-mode-back").addEventListener("click", gameModeBack);
     document.getElementById("start").addEventListener("click", startGame);
     document.getElementById("start-screen-back").addEventListener("click", pickGameModeScreen);
+
+    // add how to play event listeners
+    document.getElementById("how-to-play").addEventListener("click", howToPlay);
+    document.getElementById("how-to-play-close").addEventListener("click", howToPlayClose);
+    document.getElementById("whats-your-hand-backdrop").addEventListener("click", howToPlayClose);
+    document.getElementById("howto-next").addEventListener("click", howToNext);
+
+    document.getElementById("high-card-howto").addEventListener("click", () => { selectHandHowTo(9, "high-card-howto");});
+    document.getElementById("pair-howto").addEventListener("click", () => { selectHandHowTo(8, "pair-howto");});
+    document.getElementById("two-pair-howto").addEventListener("click", () => { selectHandHowTo(7, "two-pair-howto");});
+    document.getElementById("three-of-a-kind-howto").addEventListener("click", () => { selectHandHowTo(6, "three-of-a-kind-howto");});
+    document.getElementById("straight-howto").addEventListener("click", () => { selectHandHowTo(5, "straight-howto");});
+    document.getElementById("flush-howto").addEventListener("click", () => { selectHandHowTo(4, "flush-howto");});
+    document.getElementById("full-house-howto").addEventListener("click", () => { selectHandHowTo(3, "full-house-howto");});
+    document.getElementById("four-of-a-kind-howto").addEventListener("click", () => { selectHandHowTo(2, "four-of-a-kind-howto");});
+    document.getElementById("straight-flush-howto").addEventListener("click", () => { selectHandHowTo(1, "straight-flush-howto");});
+    document.getElementById("royal-flush-howto").addEventListener("click", () => { selectHandHowTo(0, "royal-flush-howto");});
 
 
     // add game mode event listeners
@@ -302,7 +321,7 @@ function zenStartScreen() {
     
     document.getElementById("start-screen-body").style.color = "var(--main-green-color)";
     document.getElementById("game-mode-name").innerText = "Zen";
-    document.getElementById("game-mode-description").innerText = "A relaxing, never-ending mode with explanations.";
+    document.getElementById("game-mode-description").innerText = "A relaxing, never-ending mode.";
     document.getElementById("game-mode-instructions").innerHTML =
     "Practice identifying hands without any pressure. Keep trying until you get it right.";
 
@@ -387,6 +406,8 @@ function startTimer() {
 function exit() {
     if (gameMode === BLITZ) {
         clearInterval(countdown);
+    } else if (gameMode === SURVIVAL) {
+        document.getElementById("survival-message-wrapper").style.display = "none";
     }
     else if (gameMode == ZEN) {
         document.getElementById("result").style.display="none";
@@ -395,6 +416,77 @@ function exit() {
 
     pickGameModeScreen();
 }
+
+
+function howToPlay() {
+    document.getElementById("whats-your-hand-backdrop").style.display = "block";
+    document.getElementById("how-to-play-popup").style.display = "block";
+}
+
+function howToPlayClose() {
+    document.getElementById("whats-your-hand-backdrop").style.display = "none";
+    document.getElementById("how-to-play-popup").style.display = "none";
+}
+
+function selectHandHowTo(handPlace, id) {
+
+    clearSelectedHowTo();
+
+    document.getElementById(id).classList.add("selected");
+
+    if (howToStreet === FLOP) {
+        if (handPlace === 6) { // three of a kind
+            document.getElementById("howto-ex-feedback").innerText = "Three of a Kind if CORRECT!"
+            document.getElementById("howto-next").style.display = "inline";
+        } else {
+            document.getElementById("howto-next").style.display = "none";
+            document.getElementById("howto-ex-feedback").innerText = PokerUtils.handTypes[handPlace] + " is incorrect. Try again."
+        }
+    } else if (howToStreet == TURN) {
+        if (handPlace === 6) { // three of a kind
+            document.getElementById("howto-ex-feedback").innerText = "Three of a Kind if CORRECT!"
+            document.getElementById("howto-next").style.display = "inline";
+        } else {
+            document.getElementById("howto-next").style.display = "none";
+            document.getElementById("howto-ex-feedback").innerText = PokerUtils.handTypes[handPlace] + " is incorrect. Try again."
+        }
+    } else { // RIVER
+        if (handPlace === 3) { // full house
+            document.getElementById("howto-ex-feedback").innerText = "Full House is CORRECT! (End of example.)"
+        } else {
+            document.getElementById("howto-ex-feedback").innerText = PokerUtils.handTypes[handPlace] + " is incorrect. Try again."
+        }
+    }
+
+}
+
+function howToNext() {
+    clearSelectedHowTo();
+    if (howToStreet == FLOP) {
+        howToStreet++;
+
+        document.getElementById("street-howto").innerText = "TURN";
+
+        let cardImg = document.createElement("img");
+        cardImg.src = "/assets/cards/2-H.png";
+        document.getElementById("board-cards-howto").append(cardImg);
+
+        document.getElementById("howto-ex-feedback").innerText = "";
+        document.getElementById("howto-next").style.display = "none";
+    } else if (howToStreet == TURN) {
+        howToStreet++;
+
+        document.getElementById("street-howto").innerText = "RIVER";
+
+        let cardImg = document.createElement("img");
+        cardImg.src = "/assets/cards/J-C.png";
+        document.getElementById("board-cards-howto").append(cardImg);
+
+        document.getElementById("howto-ex-feedback").innerText = "";
+        document.getElementById("howto-next").style.display = "none";
+    }
+}
+
 
 function flash() {
     indicator = document.getElementById("indicator");
@@ -426,6 +518,17 @@ function clearSelected() {
     // clear selected 
 
     let handGrid = document.getElementById("hand-grid");
+    let selectedElements = handGrid.querySelectorAll('.selected');
+    selectedElements.forEach(element => {
+        element.classList.remove('selected');
+    });
+}
+
+function clearSelectedHowTo() {
+    
+    // clear selected 
+
+    let handGrid = document.getElementById("hand-grid-howto");
     let selectedElements = handGrid.querySelectorAll('.selected');
     selectedElements.forEach(element => {
         element.classList.remove('selected');
