@@ -7,7 +7,14 @@
     <h1>Dashboard</h1>
     <h2 id="username"><%= user.email %></h2>
     <section class="high-scores-container">
-            <h2 class="drill-name">Showdown</h2>
+        <h1 id="high-score-title">High Scores</h1>
+        <h2 class="drill-name">What's Your Hand?</h2>
+        <div class="high-score-container" id="whats-your-hand-container">
+            <p class="game-mode blitz">Blitz:</p> <p class="game-mode-score"><%= user.WYHblitzHighScore %></p>
+            <p class="game-mode survival">Survival:</p> <p class="game-mode-score"><%= user.WYHsurvivalHighScore %></p>
+        </div>
+
+        <h2 class="drill-name">Showdown</h2>
         <div class="high-score-container" id="showdown-container">
             <p class="game-mode blitz">Blitz:</p> <p class="game-mode-score"><%= user.blitzHighScore %></p>
             <p class="game-mode survival">Survival:</p> <p class="game-mode-score"><%= user.survivalHighScore %></p>

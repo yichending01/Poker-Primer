@@ -1,0 +1,12 @@
+.table-of-contents-container {
+    margin-bottom: 30px;
+}
+.table-of-contents-container ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.table-of-contents-container li {
+    margin: 5px 10px;
+}

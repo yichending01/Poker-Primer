@@ -25,9 +25,13 @@ h1 {
 }
 
 .high-scores-container {
-    height: 100%;
-    padding-top: 2rem;
+    height: fit-content;
+    padding: 2rem 5%;
     background-color: rgb(45, 45, 45);
+}
+
+#high-score-title {
+    margin: 0;
 }
 
 .drill-name {

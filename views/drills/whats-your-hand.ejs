@@ -1,0 +1,100 @@
+<%- include('../includes/head.ejs') %>
+        <link rel="stylesheet" href="/css/drills/whats-your-hand.css">
+        <script src="/js/pokerutils.js"></script>
+        <script src="/js/drills/whats-your-hand.js"></script>
+    </head>
+
+    <body>
+        <%- include('../includes/nav.ejs') %>
+        <main>
+            <div id="game-modes">
+                <div id="game-mode-top-bar">
+                    <button id="game-mode-back" class="btn">Back</button>
+                    <h1 class="game-title">WHAT'S YOUR HAND?</h1>
+                    <button id="how-to-play" class="btn">HOW TO PLAY</button>
+                </div>
+                <h1 id="choose-text">Choose a Game Mode</h1>
+                <div class="game-mode-grid">
+                    <div id="blitz" class="game-mode-item">
+                        <img src="assets/badges/blitz_badge.png">
+                    </div>
+                    <div id="survival" class="game-mode-item">
+                        <img src="assets/badges/survival_badge.png">
+                    </div>
+                    <div id="zen" class="game-mode-item">
+                        <img src="assets/badges/zen_badge.png">
+                    </div>
+                </div>
+            </div>
+
+            <div id="start-screen" style="display: none;">
+                <div id="start-screen-top-bar">
+                    <button id="start-screen-back" class="btn">Back</button>
+                </div>
+                <div id="start-screen-body">
+                    <h1 id="game-mode-name"></h1>
+                    <p id="game-mode-description"></p>
+                    <div id="game-mode-instructions-wrapper">
+                        <h2>Instructions</h2>
+                        <p id="game-mode-instructions"></p>
+                    </div>
+                    <button id="start" class="btn">START</button>
+                </div>
+            </div>
+
+            <div id="game-area"style="display: none;">
+                <div class="game-area-top-bar">
+                    <button id="exit" class="btn">Exit</button>
+                    <p id="score"></p>
+                    <div id="timer" style="display: none;"></div>
+                </div>
+                <div class="mobile-cards-container">
+                    <div class="board-wrapper">
+                        <h3>BOARD</h3>
+                        <h4 id="street"></h4>
+                        <div id="board-cards"></div>
+                    </div>
+                    <div id="your-cards-container">
+                        <h3 id="your-cards-label">YOUR CARDS</h3>
+                        <div id="your-cards"></div>
+                    </div>
+                </div>
+                <div id="hand-grid">
+                    <div class="hand-btn" id="high-card">High Card</div>
+                    <div class="hand-btn" id="pair">Pair</div>
+                    <div class="hand-btn" id="two-pair">Two-Pair</div>
+                    <div class="hand-btn" id="three-of-a-kind">Three of a Kind</div>
+                    <div class="hand-btn" id="straight">Straight</div>
+                    <div class="hand-btn" id="flush">Flush</div>
+                    <div class="hand-btn" id="full-house">Full House</div>
+                    <div class="hand-btn" id="four-of-a-kind">Four of a Kind</div>
+                    <div class="hand-btn" id="straight-flush">Straight Flush</div>
+                    <div class="hand-btn" id="royal-flush">Royal Flush</div>
+                </div>
+                <div class="result-wrapper">
+                    <p id="result"></p>
+                    <button id="next" class="btn" style="display: none;">NEXT</button>
+                </div>
+                <div id="survival-message-wrapper">
+                    <div id="survival-message"></div>
+                    <button id="survival-next" class="btn">End Game</button>
+                </div>
+                <div id="indicator" class="flashing"></div>
+            </div>
+
+            <div id="game-over-screen" style="display: none;">
+                <h1>Game Over</h1>
+                <p id="high-score-message" style="display: none;">New High Score!</p>
+                <h2>Score</h2>
+                <p id="final-score"></p>
+                <h2>High Score</h2>
+                <p id="high-score"></p>
+                <div class="game-over-btns">
+                    <button id="play-again" class="btn">Play Again</button>
+                    <br>
+                    <button id="game-over-back" class="btn">Back</button>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

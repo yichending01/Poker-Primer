@@ -22,6 +22,14 @@ const userSchema = new Schema({
     twentyHandsHighScore: {
         type: Number,
         required: true
+    },
+    WYHblitzHighScore: {
+        type: Number,
+        required: true
+    },
+    WYHsurvivalHighScore: {
+        type: Number,
+        required: true
     }
 })
 

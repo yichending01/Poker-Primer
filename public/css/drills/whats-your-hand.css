@@ -1,13 +1,3 @@
-:root {
-    --card-red-color: rgb(231, 4, 4);
-    --main-blue-color: #3885ed;
-    --main-green-color: #358757;
-    --main-yellow-color: #eaac26;
-    --main-red-color: #d72b2b;
-    --off-green-color: #26633f;
-    --main-medium-grey-color: rgb(35, 35, 35);
-}
-
 html {
     user-select: none;
 }
@@ -23,18 +13,7 @@ body {
 
 main {
     height: 100%;
-}
-
-#showdown-backdrop {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 70%;
-    z-index: 101;
+    color: white;
 }
 
 #game-mode-top-bar {
@@ -64,99 +43,8 @@ main {
     color: var(--main-green-color);
     padding: 0;
     margin: 0;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
-
-
-#how-to-play-popup {
-    display: none;
-    position: fixed; /* Position relative to the viewport */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Offset the position by 50% of the element's height and width */
-    width: 60vw; /* Set a width for the popup */
-    height: 70vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 20px; /* Padding inside the popup */
-    background-color: var(--off-green-color); /* Background color */
-    color: white;
-    text-align: left;
-    border: 5px solid var(--main-yellow-color); /* Border styling */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for a popup effect */
-    z-index: 1000; /* Ensures the popup is above other content */
-}
-
-#how-to-play-popup h2 {
-    font-size: 2rem;
-    margin: 0.5rem 0 1rem 0;
-}
-
-#how-to-play-popup h3 {
-    font-size: 1.8rem;
-    margin: 1.2rem 0 0.5rem 0;
-}
-
-#how-to-play-popup p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin: 0;
-}
-
-#how-to-play-popup a {
-    /* text-decoration: none; */
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin: 0;
-    color: var(--main-yellow-color);
-}
-
-.board-wrapper-howto {
-    text-align: center;
-}
-
-#player-1-container-howto h3,
-#player-2-container-howto h3 {
-    margin: 1rem 0;
-}
-
-#player-1-cards-howto img,
-#player-2-cards-howto img,
-#board-cards-howto img {
-    width: 5vw;
-}
-
-.player-cards-wrapper-howto {
-    display: grid;
-    grid-template-columns: 4fr 1fr 4fr;
-    margin: 0 auto;
-    align-items: center;
-    gap: 5px;
-}
-
-.player-cards-howto {
-    text-align: center;
-}
-
-
-#tie-howto {
-    justify-self: center;
-}
-
-#howto-ex-feedback {
-    display: block;
-    text-align: center;
-    padding: 1rem 0;
-    margin: 1rem 0;
-}
-
-#how-to-play-close {
-    display: block;
-    margin: 1rem auto 0 auto;
-    font-size: 1.5rem;
-}
-
 
 #choose-text {
     margin: 1.5rem 0 3rem 0;
@@ -173,7 +61,7 @@ main {
 .game-mode-grid {
     margin: 0;
     display: grid;
-    grid-template-rows: repeat(4, 18%);
+    grid-template-rows: repeat(3, 23%);
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 20px;
@@ -208,6 +96,7 @@ transform: scale(1.1);
 
 
 #start-screen {
+    display: none;
     padding: 0 15%;
     color: white;
     height: 100%;
@@ -266,13 +155,10 @@ transform: scale(1.1);
     line-height: 1.5;
 }
 
-
-#game-area {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    color: white;
-    background-color: var(--off-green-color);
+#start {
+    font-size: 3rem;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
 }
 
 
@@ -295,6 +181,7 @@ transform: scale(1.1);
 #score {
     grid-column: 2;
     font-size: 2rem;
+    margin: 0;
 }
 
 #timer {
@@ -323,7 +210,6 @@ transform: scale(1.1);
     animation: flash-border 0.2s linear 0s 3;
 }
 
-
 #game-area h2 {
     font-size: 2rem;
     margin: 0 0 1rem 0;
@@ -332,92 +218,120 @@ transform: scale(1.1);
 #game-area h3 {
     font-size: 2rem;
     margin: 0;
-    padding-bottom: 1rem;
+    padding-bottom: 0;
 }
 
-.board-wrapper {
+#game-area h4 {
     margin: 0;
-}
-
-#board-cards {
-    position: center;
-}
-
-#board-cards img {
-    width: 8vw;
-    margin: 4px;
-}
-
-.selected {
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
     color: var(--main-yellow-color);
 }
 
-.player-cards-wrapper {
+.board-wrapper {
+    margin: auto;
     display: grid;
-    grid-template-columns: 4fr 1fr 4fr;
-    margin: 2rem auto;
-    align-items: center;
+    justify-items: center;
 }
 
-.player-cards {
-    display: grid;
-    margin: 0 1rem;
+#board-cards {
+    display: flex;
 }
 
-#player-1-container,
-#player-1-container-howto {
-    justify-self: end;
-}
-
-#player-2-container,
-#player-2-container-howto {
-    justify-self: start;
-}
-
-#tie {
-    font-size: 2rem;
-    height: 3rem;
-    width: 5rem;
-    align-self: center;
-    justify-self: center;
-    border-radius: 5px;
-}
-
-#player-1-cards, 
-#player-2-cards,
-#player-1-cards-howto,
-#player-2-cards-howto {
-    cursor: pointer;
-}
-
-#player-1-cards:hover, 
-#player-2-cards:hover,
-#player-1-cards-howto:hover,
-#player-2-cards-howto:hover {
-    transform: scale(1.1);
-}
-
-#player-1-cards img {
-    width: 8vw;
+#board-cards img {
+    width: 6rem;
     margin: 4px;
 }
 
-#player-2-cards img {
-    width: 8vw;
+#your-cards-container {
+    display: grid;
+    margin: 2rem 0;
+    justify-items: center;
+}
+
+#your-cards img {
+    width: 6rem;
     margin: 4px;
 }
 
+#hand-grid {
+    margin: auto;
+    width: fit-content;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: " high-card pair two-pair "
+                         " three-of-a-kind straight flush  "
+                         " full-house four-of-a-kind straight-flush "
+                         " . royal-flush . ";
+    justify-items: center;
+    gap: 10px;
+}
 
-#indicator {
-    display: none;
+.hand-btn {
+    padding: 0.25rem 1rem;
+    text-decoration: none;
     font: inherit;
-    font-size: 3rem;
-    margin: 0.5rem auto;
+    font-size: 1.5rem;
+    width: 15rem;
+    border: 3px solid var(--main-blue-color);
+    color: white;
+    background-color: var(--main-blue-color);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+  
+.hand-btn:hover,
+.hand-btn:active,
+.selected {
+  background-color: white;
+  color: var(--main-blue-color);
+}
+
+#high-card {
+    grid-area: high-card;
+}
+
+#pair {
+    grid-area: pair;
+}
+
+#two-pair {
+    grid-area: two-pair;
+}
+
+#three-of-a-kind {
+    grid-area: three-of-a-kind;
+}
+
+#straight {
+    grid-area: straight;
+}
+
+#flush {
+    grid-area: flush;
+}
+
+#full-house {
+    grid-area: full-house;
+}
+
+#four-of-a-kind {
+    grid-area: four-of-a-kind;
+}
+
+#straight-flush {
+    grid-area: straight-flush;
+}
+
+#royal-flush {
+    grid-area: royal-flush;
 }
 
 .result-wrapper {
     text-align: center;
-    margin: 0 15%;
+    margin: 1rem 15%;
 }
 
 #result {
@@ -428,9 +342,35 @@ transform: scale(1.1);
 
 #next {
     font-size: 2rem;
-    width: 10rem;
 }
 
+#survival-message-wrapper {
+    display: none;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+#survival-message {
+    font-size: 2rem;
+    color: var(--main-red-color);
+    width: fit-content;
+    margin: 0.5rem 0.5rem;
+    display: inline-block;
+}
+
+#survival-next {
+    display: "inline-block";
+    margin: 0.5rem auto;
+    font-size: 2rem;
+}
+
+#indicator {
+    display: block;
+    font: inherit;
+    font-size: 3rem;
+    margin: 0.2rem auto;
+    width: fit-content;
+}
 
 #game-over-screen {
     text-align: center;
@@ -469,8 +409,6 @@ transform: scale(1.1);
 
 
 
-
-
 @media (max-width: 750px) {
 
     #game-mode-top-bar {
@@ -482,6 +420,7 @@ transform: scale(1.1);
         padding: 1.5rem 1rem;
         margin: 0 5%;
     }
+
 
     #how-to-play-popup {
         display: none;
@@ -523,56 +462,6 @@ transform: scale(1.1);
         line-height: 1.5;
         margin: 0;
         color: var(--main-yellow-color);
-    }
-    
-    .board-wrapper-howto {
-        text-align: center;
-    }
-
-    .board-wrapper-howto h3 {
-        font-size: 1rem;
-    };
-    
-    #player-1-container-howto h3,
-    #player-2-container-howto h3 {
-        font-size: 1rem;
-        margin: 1rem 0;
-    }
-    
-    #player-1-cards-howto img,
-    #player-2-cards-howto img,
-    #board-cards-howto img {
-        width: 15vw;
-    }
-    
-    .player-cards-wrapper-howto {
-        display: grid;
-        grid-template-columns: 4fr 1fr 4fr;
-        margin: 0 auto;
-        align-items: center;
-        gap: 8px;
-    }
-    
-    .player-cards-howto {
-        text-align: center;
-    }
-    
-    
-    #tie-howto {
-        justify-self: center;
-    }
-    
-    #howto-ex-feedback {
-        display: block;
-        text-align: center;
-        padding: 1rem 0;
-        margin: 1rem 0;
-    }
-    
-    #how-to-play-close {
-        display: block;
-        margin: 1rem auto 0 auto;
-        font-size: 1.5rem;
     }
 
     .game-mode-item {
@@ -619,7 +508,7 @@ transform: scale(1.1);
         font-size: 2rem;
     }
 
-    #game-01-start {
+    #start {
         margin: 0.6rem 0;
     }
 
@@ -636,6 +525,7 @@ transform: scale(1.1);
         grid-column: 2;
         font-size: 2rem;
         margin: 0;
+        text-align: center;
     }
 
     #timer {
@@ -654,41 +544,76 @@ transform: scale(1.1);
         margin: 0;
     }
 
+    /* .mobile-cards-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: end;
+    } */
+
     #board-cards img {
-        width: 15vw;
+        width: 3rem;
         margin: 4px;
     }
 
     #game-area h3 {
         font-size: 1.5rem;
         margin: 0;
+        display: inline;
     }
 
-    #player-1-cards img {
-        width: 15vw;
+    #game-area h4 {
+        display: inline;
+    }
+
+    #your-cards-container {
+        margin: 0.2rem auto;
+    }
+
+    #your-cards {
+        width: fit-content;
+    }
+
+    #your-cards img {
+        width: 3rem;
         margin: 4px;
+    }
+
+    #hand-grid {
+        margin: auto;
+        width: fit-content;
+        display: grid;
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-columns: auto auto ;
+        grid-template-areas: " high-card pair " 
+                             " two-pair three-of-a-kind "
+                             " straight flush  "
+                             " full-house four-of-a-kind "
+                             " straight-flush royal-flush";
+        justify-items: center;
+        gap: 10px;
     }
     
-    #player-2-cards img {
-        width: 15vw;
-        margin: 4px;
+    .hand-btn {
+        padding: 0.25rem 1rem;
+        text-decoration: none;
+        font: inherit;
+        font-size: 1.1rem;
+        width: 10rem;
+        border: 3px solid var(--main-blue-color);
+        color: white;
+        background-color: var(--main-blue-color);
+        border-radius: 10px;
+        cursor: pointer;
+        text-align: center;
     }
 
-    #tie {
-        font-size: 1.5rem;
-        /* height: 2rem;
-        width: 3rem; */
-        width: fit-content;
-        height: fit-content;
-        align-self: center;
-        justify-self: center;
-        border-radius: 5px;
-        padding: 0.5rem;
+    #indicator {
+        font-size: 2rem;
     }
 
     .result-wrapper {
         text-align: center;
-        margin: 0 5%;
+        margin: 0.2rem 5%;
     }
 
     #result {
@@ -709,6 +634,20 @@ transform: scale(1.1);
         padding: 0.5rem;
     }
 
+    #survival-message-wrapper {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    #survival-message {
+        font-size: 1.5rem;
+    }
+
+    #survival-next {
+        font-size: 1.5rem;
+    }
+
+
     #game-over-screen h1 {
         font-size: 3.5rem;
         margin: 1rem;
@@ -724,5 +663,4 @@ transform: scale(1.1);
         margin: 0.5rem;
         font-size: 2rem;
     }
-
 }

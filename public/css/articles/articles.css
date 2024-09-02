@@ -61,6 +61,14 @@ main a:hover {
     width: 7vw;
 }
 
+.red {
+    color: var(--main-green-color);
+}
+
+.green {
+    color: var(--main-green-color);
+}
+
 @media (max-width: 850px) {
     main {
         padding: 2rem 5%;
