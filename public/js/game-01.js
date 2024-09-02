@@ -567,7 +567,7 @@ function exit(gameMode) {
 
 
 function gameModeBack() {
-    window.location.href = "/";
+    window.location.href = "/#drills-title";
 }
 
 

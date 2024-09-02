@@ -137,20 +137,45 @@ main {
   margin: 0;
   padding: 0;
   height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  font-weight: 900;
-  font-size: 4rem;
-  /* background-image: url("../assets/landing-img.png");
-  background-size: cover; */
   background-color: var(--off-green-color);
   width: 100%;
 }
 
+#landing-images {
+  position: absolute;
+  top: 20%;
+  display: flex;
+  margin: 0 15% ;
+  justify-content: space-around;
+  gap: 10px;
+  width: 70%;
+}
+
+#landing-images img {
+  width: 10rem;
+}
+
+#landing-text {
+  position: absolute;
+  left: 15%;
+  top: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 0.5rem;
+  width: fit-content;
+}
+
+#poker-primer-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
 #poker {
   font-weight: 900;
+  font-size: 8rem;
+  margin: 0;
   color: var(--main-red-color);
   -webkit-text-stroke-width: 4px;
   -webkit-text-stroke-color: black;
@@ -159,9 +184,32 @@ main {
 
 #primer {
   font-weight: 900;
+  font-size: 8rem;
+  margin: 0;
   color: white;
   -webkit-text-stroke-width: 4px;
   -webkit-text-stroke-color: black;
+}
+
+#landing-tagline {
+  font-size: 2.5rem;
+  font-style: normal;
+  color: white;
+  margin: 0;
+}
+
+.tagline {
+  margin: 0 0 1rem 0;
+  font-size: 2.7rem;
+}
+
+#articles-tagline,
+#tools-tagline {
+  color: black;
+}
+
+#drills-tagline {
+  color: var(--main-green-color)
 }
 
 
@@ -185,21 +233,21 @@ main {
 }
 
 #drills-title  {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: white;
   margin: 0;
   padding: 0 0 1rem 0;
 }
 
 #tools-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: black;
   margin: 0;
   padding: 0 0 1rem 0;
 }
 
 #articles-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: black;
   margin: 0;
   padding: 0 0 1rem 0;
@@ -328,60 +376,5 @@ main {
 
   .mobile-nav__item button {
     font-size: 2rem;
-  }
-
-  .landing {
-    margin: 0;
-    padding: 0;
-    height: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1rem;
-    font-weight: 900;
-    font-size: 4rem;
-    /* background-image: url("../assets/landing-img.png");
-    background-size: cover; */
-    background-color: var(--off-green-color);
-    width: 100%;
-  }
-
-  #poker {
-    font-weight: 900;
-    color: var(--main-red-color);
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: black;
-    font-size: 6rem;
-    margin: 0;
-  }
-  
-  
-  #primer {
-    font-weight: 900;
-    color: white;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: black;
-    font-size: 6rem;
-    margin: 0;
-  }
-
-  .drills {
-    background-color: var(--main-dark-grey-color);
-    width: 100%;
-    padding: 3rem 5%;
-  }
-  
-  .tools, .articles {
-    background-color: var(--main-blue-color);
-    width: 100%;
-    padding: 3rem 5%;
-    margin: 0;
-  }
-
-  .drills-grid, .tools-grid, .articles-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    height: 100%;
   }
 }

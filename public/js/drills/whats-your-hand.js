@@ -536,7 +536,7 @@ function clearSelectedHowTo() {
 }
 
 function gameModeBack() {
-    window.location.href = "/";
+    window.location.href = "/#drills-title";
 }
 
 function capitalizeFirstLetter(string) {

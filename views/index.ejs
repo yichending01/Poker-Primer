@@ -1,13 +1,26 @@
 <%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/index.css">
     </head>
 
     <body>
         <%- include('includes/nav.ejs') %>
         <main>
             <div class="landing">
-                <h1 id="poker">Poker</h2><h1 id="primer">Primer</h2>
+                <div id="landing-images">
+                    <img src="/assets/icons/poker_chip_club.png">
+                    <img src="/assets/icons/poker_chip_heart.png">
+                    <img src="/assets/icons/poker_chip_spade.png">
+                    <img src="/assets/icons/poker_chip_diamond.png">
+                </div>
+                <div id="landing-text">
+                    <div id="poker-primer-wrapper">
+                        <h1 id="poker">Poker</h1><h1 id="primer">Primer</h1>
+                    </div>
+                    <h2 id="landing-tagline">The go-to platform for new poker players.</h2>
+                </div>
             </div>
             <div class="articles">
+                <h1 id="articles-tagline" class="tagline">New to Poker? Start here with beginner-friendly articles.</h1>
                 <h2 id="articles-title">Articles</h2>
                 <div class="articles-grid">
                     <div class="articles-item" id="how-to-play-poker">
@@ -21,14 +34,12 @@
                     <div class="articles-item" id="poker-lingo">
                         <img src="/assets/badges/poker_lingo_badge.png">
                     </div>
-
-                    <div class="articles-item" id="articles-coming-soon">
-                        <img src="/assets/badges/articles_coming_soon_badge.png">
-                    </div>
                 </div>
-                
+            </div>
+            
             </div>
             <div class="drills">
+                <h1 id="drills-tagline" class="tagline">Ready to practice? Dive into drills.</h1>
                 <h2 id="drills-title">Drills</h2>
                 <div class="drills-grid">
                     <!-- Drill 1 -->
@@ -48,6 +59,7 @@
                 </div>
             </div>
             <div class="tools">
+                <h1 id="tools-tagline" class="tagline">Want to explore? Try out our tools.</h1>
                 <h2 id="tools-title">Tools</h2>
                 <div class="tools-grid">
                     <div class="tool-item" id="hand-evaluator">
