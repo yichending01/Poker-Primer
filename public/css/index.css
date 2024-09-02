@@ -1,8 +1,8 @@
 @media (max-width: 950px) {
     .landing {
-        margin: 0;
-        padding: 0;
-        height: 80%;
+        margin: 0 0 0 0;
+        padding: 5% 0;
+        height: fit-content;
         display: flex;
         justify-content: center;
         align-items: center;
