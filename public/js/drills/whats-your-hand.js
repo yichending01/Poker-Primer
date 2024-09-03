@@ -266,7 +266,7 @@ function selectHand(selectedHandPlace, id) {
             gameOver = true;
         } else if (gameMode === ZEN) {
             document.getElementById(id).classList.add("selected");
-            document.getElementById("result").innerText = capitalizeFirstLetter(id) + " is incorrect. Try Again!";
+            document.getElementById("result").innerText = PokerUtils.handTypes[selectedHandPlace] + " is incorrect. Try Again!";
             document.getElementById("result").style.display = "inline-block";
         }
     }
@@ -436,7 +436,7 @@ function selectHandHowTo(handPlace, id) {
 
     if (howToStreet === FLOP) {
         if (handPlace === 6) { // three of a kind
-            document.getElementById("howto-ex-feedback").innerText = "Three of a Kind if CORRECT!"
+            document.getElementById("howto-ex-feedback").innerText = "Three of a Kind if CORRECT! On to the turn."
             document.getElementById("howto-next").style.display = "inline";
         } else {
             document.getElementById("howto-next").style.display = "none";
@@ -444,7 +444,7 @@ function selectHandHowTo(handPlace, id) {
         }
     } else if (howToStreet == TURN) {
         if (handPlace === 6) { // three of a kind
-            document.getElementById("howto-ex-feedback").innerText = "Three of a Kind if CORRECT!"
+            document.getElementById("howto-ex-feedback").innerText = "Three of a Kind if CORRECT! On to the river."
             document.getElementById("howto-next").style.display = "inline";
         } else {
             document.getElementById("howto-next").style.display = "none";
@@ -539,9 +539,5 @@ function gameModeBack() {
     window.location.href = "/#drills-title";
 }
 
-function capitalizeFirstLetter(string) {
-    if (!string) return ''; // Check if the string is empty or undefined
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
   
 

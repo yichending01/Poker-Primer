@@ -220,14 +220,14 @@ main {
 }
 
 .tools {
-  background-color: var(--main-blue-color);
+  background-color: var(--main-green-color);
   width: 100%;
   padding: 3rem 15%;
   margin: 0;
 }
 
 .articles {
-  background-color: var(--main-blue-color);
+  background-color: var(--main-green-color);
   width: 100%;
   padding: 3rem 15%;
 }

@@ -138,7 +138,7 @@
                 </li>
                 <li>
                     <h3><strong>High Card</strong></h3>
-                    <p>When no player has any of the hands above, the player with the highest card wins.</p>
+                    <p>When your hand matches none of the above, you have a High Card.</p>
                     <p class="hand-example">Example: A♣, 10♦, 7♠, 4♠, 2♣</p>
                     <div class="hand-container">
                         <img src="/assets/cards/A-C.png">
@@ -151,27 +151,27 @@
             </ul>
         
             <h2 id="what-is-a-kicker">What is a Kicker?</h2>
-            <p>A <strong>kicker</strong> is a card that is not directly involved in forming a poker hand but can be used to determine the winner when two players have hands of the same rank. For example, in a situation where two players both have a pair, the highest unrelated card (the kicker) can decide who wins the hand. Kickers are most commonly used in hands like Pair, Two Pair, and Three of a Kind, as well as in High Card situations.</p>
+            <p>A <strong>kicker</strong> is a card that is not directly involved in forming a poker hand but can be used to determine the winner when two players have hands of the same rank. For example, in a situation where two players have the same pair, the highest unrelated card (the kicker) can decide who wins the hand. Kickers are most commonly used in hands like Pair, Two Pair, and Three of a Kind, as well as in High Card situations.</p>
             <p>For example, consider the following two hands:</p>
             <ul>
                 <li>
-                    <p class="hand-example">Player 1: 5♠, 5♦, K♣, 9♠, 4♣ (Pair of Fives, King kicker)</p>
+                    <p class="hand-example">Player 1: 5♠, 5♦, K♣, 9♠, 8♣ (Pair of Fives, King kicker)</p>
                     <div class="hand-container">
                         <img src="/assets/cards/5-S.png">
                         <img src="/assets/cards/5-D.png">
                         <img src="/assets/cards/K-C.png">
                         <img src="/assets/cards/9-S.png">
-                        <img src="/assets/cards/4-C.png">
+                        <img src="/assets/cards/8-C.png">
                     </div>
                 </li>
                 <li>
-                    <p class="hand-example">Player 2: 5♣, 5♦, Q♠, 9♠, 4♣ (Pair of Fives, Queen kicker)</p>
+                    <p class="hand-example">Player 2: 5♣, 5♦, Q♠, 9♠, 8♣ (Pair of Fives, Queen kicker)</p>
                     <div class="hand-container">
                         <img src="/assets/cards/5-C.png">
                         <img src="/assets/cards/5-D.png">
                         <img src="/assets/cards/Q-S.png">
                         <img src="/assets/cards/9-S.png">
-                        <img src="/assets/cards/4-C.png">
+                        <img src="/assets/cards/8-C.png">
                     </div>
                 </li>
             </ul>
@@ -179,6 +179,8 @@
         
             <h2 id="breaking-ties">Breaking Ties in Poker Hands</h2>
             <p>In poker, ties are relatively common, and there are specific rules for breaking ties depending on the type of hand. Here’s how ties are typically resolved:</p>
+            
+            <p>Note: the order of ranks from highest to lowest goes A, K, Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2.</p>
             <ul>
                 <li>
                     <h3><strong>Royal Flush</strong></h3>
@@ -212,7 +214,7 @@
                 </li>
                 <li>
                     <h3><strong>Two Pair</strong></h3>
-                    The player with the higher pair wins. If the highest pairs are the same, the second pair is compared. If both pairs are identical, the kicker decides the winner. If the kicker is identical, the pot is split.
+                    The player with the highest pair wins. If the highest pairs are the same, the second pair is compared. If both pairs are identical, the kicker decides the winner. If the kicker is identical, the pot is split.
                 </li>
                 <li>
                     <h3><strong>Pair</strong></h3>

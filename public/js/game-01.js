@@ -8,6 +8,7 @@ const ZEN = 3;
 let score;
 let zenMessage;
 let sameHandType = false;
+let gameOverSurvival = false;
 
 
 window.onload = function() {
@@ -16,6 +17,8 @@ window.onload = function() {
     document.getElementById("survival").addEventListener("click", survivalStartScreen);
     document.getElementById("20-hands").addEventListener("click", twentyHandsStartScreen);
     document.getElementById("zen").addEventListener("click", zenStartScreen);
+
+    document.getElementById("survival-next").addEventListener("click", survivalNext);
 
     document.getElementById("start-screen-back").addEventListener("click", pickGameModeScreen);
     document.getElementById("game-mode-back").addEventListener("click", gameModeBack);
@@ -34,6 +37,7 @@ function startGame(gameMode) {
     document.getElementById("start-screen").style.display="none";
     document.getElementById("game-over-screen").style.display = "none";
     document.getElementById("timer").style.display = "none";
+    document.getElementById("survival-message-wrapper").style.display = "none";
 
     // reveal game area
     document.getElementById("game-area").style.display = "block";
@@ -47,6 +51,9 @@ function startGame(gameMode) {
     // reset score
     score = 0;
 
+    // reset game over survival
+    gameOverSurvival = false;
+
     // handle different game modes
     if (gameMode === BLITZ) { // blitz
         document.getElementById("score").style.display="block";
@@ -58,6 +65,7 @@ function startGame(gameMode) {
     }
     else if (gameMode === SURVIVAL) { // survival
         document.getElementById("score").style.display="block";
+        document.querySelector(".result-wrapper").style.display = "none";
     }
     else if (gameMode === TWENTYHANDS) { // 20 hands
         document.getElementById("score").style.display="block";
@@ -68,6 +76,7 @@ function startGame(gameMode) {
         startStopwatch();
     }
     else if (gameMode === ZEN) { // zen
+        document.querySelector(".result-wrapper").style.display = "block";
         document.getElementById("score").style.display="none";
     }
 
@@ -159,6 +168,9 @@ function gameRound(gameMode, deck) {
     p1Hand = PokerUtils.findBestHand(p1Cards.concat(boardCards));
     p2Hand = PokerUtils.findBestHand(p2Cards.concat(boardCards));
 
+    p1HandPlace = p1Hand[1];
+    p2HandPlace = p2Hand[1];
+
 
     // determine winner
 
@@ -176,7 +188,7 @@ function gameRound(gameMode, deck) {
 
     document.getElementById("player-1-cards").onclick = () => { p1Win(gameMode, deck, winner, p1Hand, p2Hand) };
     document.getElementById("player-2-cards").onclick = () => { p2Win(gameMode, deck, winner, p1Hand, p2Hand) };
-    document.getElementById("tie").onclick = () => { tiebtn(gameMode, deck, winner) };
+    document.getElementById("tie").onclick = () => { tiebtn(gameMode, deck, winner, p1Hand, p2Hand) };
     document.getElementById("next").onclick =  () => { gameRound(gameMode, deck) };
 
 
@@ -185,6 +197,9 @@ function gameRound(gameMode, deck) {
 
 
 function p1Win(gameMode, deck, winner, p1Hand, p2Hand) {
+    if (gameOverSurvival) {
+        return;
+    }
     document.getElementById("player-1-label").classList.add("selected");
     document.getElementById("player-2-label").classList.remove("selected");
     document.getElementById("tie").classList.remove("selected");
@@ -221,7 +236,20 @@ function p1Win(gameMode, deck, winner, p1Hand, p2Hand) {
             gameRound(gameMode, deck);
         }
         else if (gameMode === SURVIVAL) {
-            gameOverScreen(gameMode);
+            gameOverSurvival = true;
+            if (winner == 2) {
+                if (!sameHandType) {
+                    document.getElementById("survival-message").innerText = "Incorrect! Player 2's " + PokerUtils.handTypes[p2Hand[1]] + " beats Player 1's " + PokerUtils.handTypes[p1Hand[1]];
+                } else {
+                    let m1;
+                    let m2;
+                    [m1, m2] = zenMessage.split("beats");
+                    document.getElementById("survival-message").innerText = "Incorrect! Player 2's " + m1 + "beats Player 1's" + m2;
+                }
+            } else {
+                document.getElementById("survival-message").innerText = "Incorrect! " + PokerUtils.handTypes[p2Hand[1]] + " ties " + PokerUtils.handTypes[p1Hand[1]];
+            }
+            document.getElementById("survival-message-wrapper").style.display="block";
         }
         else if (gameMode === TWENTYHANDS) {
             duration = duration + 10;
@@ -241,6 +269,9 @@ function p1Win(gameMode, deck, winner, p1Hand, p2Hand) {
 
 
 function p2Win(gameMode, deck, winner, p1Hand, p2Hand) {
+    if (gameOverSurvival) {
+        return;
+    }
     document.getElementById("player-2-label").classList.add("selected");
     document.getElementById("tie").classList.remove("selected");
     document.getElementById("player-1-label").classList.remove("selected");
@@ -277,7 +308,20 @@ function p2Win(gameMode, deck, winner, p1Hand, p2Hand) {
             gameRound(gameMode, deck);
         }
         else if (gameMode === SURVIVAL) {
-            gameOverScreen(gameMode);
+            gameOverSurvival = true;
+            if (winner == 1) {
+                if (!sameHandType) {
+                    document.getElementById("survival-message").innerText = "Incorrect! Player 1's " + PokerUtils.handTypes[p1Hand[1]] + " beats Player 2's " + PokerUtils.handTypes[p2Hand[1]];
+                } else {
+                    let m1;
+                    let m2;
+                    [m1, m2] = zenMessage.split("beats");
+                    document.getElementById("survival-message").innerText = "Incorrect! Player 1's " + m1 + "beats Player 2's" + m2;
+                }
+            } else {
+                document.getElementById("survival-message").innerText = "Incorrect! " + PokerUtils.handTypes[p2Hand[1]] + " ties " + PokerUtils.handTypes[p1Hand[1]];
+            }
+            document.getElementById("survival-message-wrapper").style.display="block";
         }
         else if (gameMode === TWENTYHANDS) {
             duration = duration + 10;
@@ -296,7 +340,10 @@ function p2Win(gameMode, deck, winner, p1Hand, p2Hand) {
 
 
 
-function tiebtn(gameMode, deck, winner) {
+function tiebtn(gameMode, deck, winner, p1Hand, p2Hand) {
+    if (gameOverSurvival) {
+        return;
+    }
     document.getElementById("player-2-label").classList.remove("selected");
     document.getElementById("tie").classList.add("selected");
     document.getElementById("player-1-label").classList.remove("selected");
@@ -333,8 +380,28 @@ function tiebtn(gameMode, deck, winner) {
             gameRound(gameMode, deck);
         }
         else if (gameMode === SURVIVAL) {
-            gameOverScreen(gameMode);
-        } 
+            gameOverSurvival = true;
+            if (winner == 1) {
+                if (!sameHandType) {
+                    document.getElementById("survival-message").innerText = "Incorrect! Player 1's " + PokerUtils.handTypes[p1Hand[1]] + " beats Player 2's " + PokerUtils.handTypes[p2Hand[1]];
+                } else {
+                    let m1;
+                    let m2;
+                    [m1, m2] = zenMessage.split("beats");
+                    document.getElementById("survival-message").innerText = "Incorrect! Player 1's " + m1 + "beats Player 2's" + m2;
+                }
+            } else if (winner == 2) {
+                if (!sameHandType) {
+                    document.getElementById("survival-message").innerText = "Incorrect! Player 2's " + PokerUtils.handTypes[p2Hand[1]] + " beats Player 1's " + PokerUtils.handTypes[p1Hand[1]];
+                } else {
+                    let m1;
+                    let m2;
+                    [m1, m2] = zenMessage.split("beats");
+                    document.getElementById("survival-message").innerText = "Incorrect! Player 2's " + m1 + "beats Player 1's" + m2;
+                }
+            }  
+            document.getElementById("survival-message-wrapper").style.display="block"; 
+        }
         else if (gameMode === TWENTYHANDS) {
             document.getElementById("indicator").innerText = "INCORRECT! +10s";
             document.getElementById("indicator").style.color = "var(--card-red-color)";
@@ -395,6 +462,10 @@ function submitScore(gameMode) {
     .catch((error) => {
         console.error('Error:', error);
     });
+}
+
+function survivalNext() {
+    gameOverScreen(SURVIVAL);
 }
 
 function gameOverScreen(gameMode) {

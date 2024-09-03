@@ -1,7 +1,7 @@
 @media (max-width: 950px) {
     .landing {
         margin: 0 0 0 0;
-        padding: 5% 0;
+        padding: 10% 0 10% 0;
         height: fit-content;
         display: flex;
         justify-content: center;
@@ -64,7 +64,7 @@
     }
     
     .tools, .articles {
-    background-color: var(--main-blue-color);
+    background-color: var(--main-green-color);
     width: 100%;
     padding: 3rem 5%;
     margin: 0;
