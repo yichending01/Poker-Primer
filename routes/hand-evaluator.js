@@ -8,4 +8,6 @@ const router = express.Router();
 
 router.get('/hand-evaluator', handEvaluatorController.getHandEvaluator);
 
+router.get('/odds-calculator', handEvaluatorController.getOddsCalculator);
+
 module.exports = router;

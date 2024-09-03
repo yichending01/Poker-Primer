@@ -537,7 +537,7 @@ transform: scale(1.1);
 
 #survival-message {
     font-size: 2rem;
-    color: var(--main-red-color);
+    color: white;
     width: fit-content;
     margin: 0.5rem 0.5rem;
     display: inline-block;

@@ -1,0 +1,63 @@
+<%- include('../includes/head.ejs') %>
+        <link rel="stylesheet" href="/css/tools/odds-calculator.css">
+        <%- include('../includes/nav.ejs') %>
+
+    </head>
+
+    <body>
+        <main>
+            <div class="top-bar">
+                <a href="/#tools-title" class="btn" id="back">Back</a>
+                <button id="calculate" class="btn">CALCULATE ODDS</button>
+                <button id="clear-all" class="btn">Clear All</button>
+            </div>
+            <div class="board-wrapper">
+                <h2>Board</h2>
+                <div id="board-cards"></div>
+                <p id="board-input-prompt">Input 0-5 board cards:</p>
+                <div id="board-input-wrapper">
+                    <input type="text" id="board-input" placeholder="Ex: 5C, AS, 7D">
+                    <button id="clear-board" class="btn">Clear</button>
+                </div>
+            </div>
+            <p id="error-message"></p>
+            <div class="player-wrapper" id="player-1-wrapper">
+                <div class="player-grid">
+                    <div class="player-label-wrapper">
+                        <h2>Player 1 Cards:</h2>
+                        <div class="player-input-wrapper">
+                            <input type="text" id="player-1-input" placeholder="Ex: 8H, KS">
+                            <button id="clear-player-1" class="btn">Clear</button>
+                        </div>
+                    </div>
+                    <div class="player-cards" id="player-1-cards">
+                    </div>
+                    <div class="player-odds-wrapper">
+                        <p class="player-prob" id="player-1-prob"></p>
+                        <p class="tie" id="tie1"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="player-wrapper" id="player-2-wrapper">
+                <div class="player-grid">
+                    <div class="player-label-wrapper">
+                        <h2>Player 2 Cards:</h2>
+                        <div class="player-input-wrapper">
+                            <input type="text" id="player-2-input" placeholder="Ex: QH, 10S">
+                            <button id="clear-player-2" class="btn">Clear</button>
+                        </div>
+                    </div>
+                    <div class="player-cards" id="player-2-cards">
+                    </div>
+                    <div class="player-odds-wrapper">
+                        <p class="player-prob" id="player-2-prob"></p>
+                        <p class="tie" id="tie2"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="/js/pokerutils.js"></script>
+        <script src="/js/tools/odds-calculator.js"></script>
+        <script src="/js/shared.js"></script>
+    </body>
+</html>
