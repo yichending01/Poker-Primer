@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: var(--main-green-color);
+    background-color: var(--off-green-color);
     color: white;
     font-size: 2rem;
 }

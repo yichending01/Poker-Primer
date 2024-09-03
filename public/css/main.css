@@ -214,7 +214,7 @@ main {
 
 
 .drills {
-  background-color: var(--main-dark-grey-color);
+  background-color: var(--main-medium-dark-grey-color);
   width: 100%;
   padding: 3rem 15%;
 }
@@ -234,7 +234,7 @@ main {
 
 #drills-title  {
   font-size: 2.2rem;
-  color: white;
+  color: var(--main-green-color);
   margin: 0;
   padding: 0 0 1rem 0;
 }
