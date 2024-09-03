@@ -287,6 +287,7 @@ function clearBoard() {
 
     document.getElementById("board-input").value="";
     clearOdds();
+    errorMessage("");
 }
 
 function clearP1() {
@@ -299,6 +300,7 @@ function clearP1() {
 
     document.getElementById("player-1-input").value="";
     clearOdds();
+    errorMessage("");
 }
 
 function clearP2() {
@@ -312,6 +314,7 @@ function clearP2() {
     document.getElementById("player-2-input").value="";
 
     clearOdds();
+    errorMessage("");
 }
 
 function clearAll() {

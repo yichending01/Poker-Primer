@@ -48,6 +48,25 @@ main {
     animation: flash 1s infinite;
 }
 
+@keyframes errorFlash {
+    0% {
+        color: white;
+    }
+
+    50% {
+        color: var(--main-red-color);
+    }
+
+    100% {
+        color: white;
+    }
+
+}
+
+.flashing-error {
+    animation: errorFlash 1s infinite ease-in-out;
+}
+
 #clear-all {
     font-size: 1.5rem;
     justify-self: center;
