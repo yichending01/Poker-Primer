@@ -1,9 +1,9 @@
 const User = require('../models/user');
 
 
-exports.getGame01 = (req, res, next) => {
-    res.render('game-01/game-01', {
-        pageTitle: 'Drill',
+exports.getShowdown = (req, res, next) => {
+    res.render('drills/showdown', {
+        pageTitle: 'Showdown',
         isLoggedIn: req.session.isLoggedIn,
         user: req.session.user
     });

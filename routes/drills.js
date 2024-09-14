@@ -4,15 +4,15 @@ const express = require('express');
 
 const User = require('../models/user');
 
-const game01Controller = require('../controllers/game-01');
+const showdownController = require('../controllers/showdown');
 
 const whatsYourHandConstroller = require('../controllers/whats-your-hand');
 
 const router = express.Router();
 
-router.get('/showdown', game01Controller.getGame01);
+router.get('/showdown', showdownController.getShowdown);
 
-router.post('/update-high-score', game01Controller.updateHighScore);
+router.post('/update-high-score', showdownController.updateHighScore);
 
 router.get('/whats-your-hand', whatsYourHandConstroller.getWhatsYourHand);
 

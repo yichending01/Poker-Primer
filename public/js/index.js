@@ -4,7 +4,7 @@ function goToDrill(url) {
 
 window.onload = function() {
 
-    document.getElementById("game-01").addEventListener("click", () => { goToDrill('/showdown') });
+    document.getElementById("showdown").addEventListener("click", () => { goToDrill('/showdown') });
     document.getElementById("whats-your-hand").addEventListener("click", () => { goToDrill('/whats-your-hand') });
     document.getElementById("hand-evaluator").addEventListener("click", () => { goToDrill('/hand-evaluator') });
     document.getElementById("odds-calculator").addEventListener("click", () => { goToDrill('/odds-calculator') });

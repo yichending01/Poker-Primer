@@ -2,7 +2,7 @@ const path = require('path');
 
 const express = require('express');
 
-const handEvaluatorController = require('../controllers/hand-evaluator');
+const handEvaluatorController = require('../controllers/tools');
 
 const router = express.Router();
 
