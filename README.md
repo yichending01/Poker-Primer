@@ -1,6 +1,6 @@
 # Poker Primer
 
-**Poker Primer** is a website designed to help beginner poker players sharpen their skills through interactive drills and tools. Selected as one of 12 projects to receive a grant at the **2024 UChicago Tech Showcase**, Poker Primer continues to evolve with exciting new features as I dive deeper into both poker and web development. Check it out at [https://www.pokerprimer.net/](https://www.pokerprimer.net/)!
+**Poker Primer** is a website designed to help beginner poker players sharpen their skills through interactive drills and tools. After winning **1st Place** at the **2024 UChicago Tech Showcase**, Poker Primer continues to evolve with exciting new features as I dive deeper into both poker and web development. Check it out at [https://www.pokerprimer.net/](https://www.pokerprimer.net/)!
 
 ## Current Features
 - **Interactive Drills**  
